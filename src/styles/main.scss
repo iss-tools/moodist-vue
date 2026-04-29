@@ -1,0 +1,278 @@
+// 引入 SCSS 变量
+@use './variables.scss' as *;
+@use 'sass:color';
+
+// ============================================
+// CSS 自定义属性 - Dark 主题 (默认)
+// ============================================
+:root,
+:root.dark {
+  // 中性色板 - Dark
+  --color-neutral-50: #09090b;
+  --color-neutral-100: #18181b;
+  --color-neutral-200: #27272a;
+  --color-neutral-300: #3f3f46;
+  --color-neutral-400: #52525b;
+  --color-neutral-500: #71717a;
+  --color-neutral-600: #a1a1aa;
+  --color-neutral-700: #d4d4d8;
+  --color-neutral-800: #e4e4e7;
+  --color-neutral-900: #f4f4f5;
+  --color-neutral-950: #fafafa;
+  
+  // RGB 值用于 rgba() 函数
+  --card-bg-rgb: 24, 24, 27;
+  --modal-overlay-rgb: 9, 9, 11;
+  --button-hover-rgb: 255, 255, 255;
+  --button-active-rgb: 255, 255, 255;
+  
+  // 背景色
+  --color-bg-primary: var(--color-neutral-50);
+  --color-bg-secondary: var(--color-neutral-100);
+  --color-bg-tertiary: var(--color-neutral-200);
+  
+  // 前景色/文本色
+  --color-fg-primary: var(--color-neutral-950);
+  --color-fg-secondary: var(--color-neutral-700);
+  --color-fg-tertiary: var(--color-neutral-600);
+  --color-fg-muted: var(--color-neutral-500);
+  
+  // 边框色
+  --color-border-primary: var(--color-neutral-200);
+  --color-border-secondary: var(--color-neutral-300);
+  --color-border-accent: var(--color-neutral-400);
+  
+  // 卡片
+  --color-card-bg: linear-gradient(rgba(24, 24, 27, 0.5), transparent);
+  --color-card-bg-hover: rgba(39, 39, 42, 0.5);
+  --color-card-border: var(--color-neutral-200);
+  --color-card-selected-border: var(--color-neutral-800);
+  --color-card-top-line: linear-gradient(90deg, transparent, #52525b, transparent);
+  
+  // 模态框
+  --color-modal-overlay: rgba(9, 9, 11, 0.4);
+  --color-modal-bg: var(--color-neutral-100);
+  
+  // 按钮和交互
+  --color-button-hover: rgba(255, 255, 255, 0.05);
+  --color-button-active: rgba(255, 255, 255, 0.1);
+  
+  // 滚动条
+  --color-scrollbar-track: var(--color-neutral-100);
+  --color-scrollbar-thumb: var(--color-neutral-400);
+  --color-scrollbar-thumb-hover: var(--color-neutral-500);
+  
+  // 选中文本
+  --color-selection-bg: var(--color-neutral-300);
+  
+  // Logo 渐变
+  --color-logo-from: var(--color-neutral-950);
+  --color-logo-to: var(--color-neutral-100);
+  
+  // 分类图标
+  --color-category-icon-bg-from: var(--color-neutral-950);
+  --color-category-icon-bg-to: var(--color-neutral-100);
+  --color-category-icon-border: var(--color-neutral-300);
+  --color-category-icon-fg: var(--color-neutral-950);
+  --color-category-tail: var(--color-neutral-300);
+  
+  // 功能色
+  --color-primary: #3b82f6;
+  --color-secondary: #64748b;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+}
+
+// ============================================
+// CSS 自定义属性 - Light 主题
+// ============================================
+:root.light {
+  // 中性色板 - Light (反转)
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f4f4f5;
+  --color-neutral-200: #e4e4e7;
+  --color-neutral-300: #d4d4d8;
+  --color-neutral-400: #a1a1aa;
+  --color-neutral-500: #71717a;
+  --color-neutral-600: #52525b;
+  --color-neutral-700: #3f3f46;
+  --color-neutral-800: #27272a;
+  --color-neutral-900: #18181b;
+  --color-neutral-950: #09090b;
+  
+  // RGB 值用于 rgba() 函数
+  --card-bg-rgb: 244, 244, 245;
+  --modal-overlay-rgb: 250, 250, 250;
+  --button-hover-rgb: 0, 0, 0;
+  --button-active-rgb: 0, 0, 0;
+  
+  // 背景色
+  --color-bg-primary: var(--color-neutral-50);
+  --color-bg-secondary: var(--color-neutral-100);
+  --color-bg-tertiary: var(--color-neutral-200);
+  
+  // 前景色/文本色
+  --color-fg-primary: var(--color-neutral-950);
+  --color-fg-secondary: var(--color-neutral-700);
+  --color-fg-tertiary: var(--color-neutral-600);
+  --color-fg-muted: var(--color-neutral-500);
+  
+  // 边框色
+  --color-border-primary: var(--color-neutral-200);
+  --color-border-secondary: var(--color-neutral-300);
+  --color-border-accent: var(--color-neutral-400);
+  
+  // 卡片
+  --color-card-bg: linear-gradient(rgba(244, 244, 245, 0.5), transparent);
+  --color-card-bg-hover: rgba(228, 228, 231, 0.5);
+  --color-card-border: var(--color-neutral-200);
+  --color-card-selected-border: var(--color-neutral-800);
+  --color-card-top-line: linear-gradient(90deg, transparent, #a1a1aa, transparent);
+  
+  // 模态框
+  --color-modal-overlay: rgba(250, 250, 250, 0.6);
+  --color-modal-bg: var(--color-neutral-100);
+  
+  // 按钮和交互
+  --color-button-hover: rgba(0, 0, 0, 0.05);
+  --color-button-active: rgba(0, 0, 0, 0.1);
+  
+  // 滚动条
+  --color-scrollbar-track: var(--color-neutral-100);
+  --color-scrollbar-thumb: var(--color-neutral-400);
+  --color-scrollbar-thumb-hover: var(--color-neutral-500);
+  
+  // 选中文本
+  --color-selection-bg: var(--color-neutral-300);
+  
+  // Logo 渐变
+  --color-logo-from: var(--color-neutral-950);
+  --color-logo-to: var(--color-neutral-100);
+  
+  // 分类图标
+  --color-category-icon-bg-from: var(--color-neutral-950);
+  --color-category-icon-bg-to: var(--color-neutral-100);
+  --color-category-icon-border: var(--color-neutral-300);
+  --color-category-icon-fg: var(--color-neutral-950);
+  --color-category-tail: var(--color-neutral-300);
+  
+  // 功能色保持不变
+  --color-primary: #3b82f6;
+  --color-secondary: #64748b;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+}
+
+// ============================================
+// 基础样式重置
+// ============================================
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// 基础样式
+html {
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family-base;
+  color: var(--color-fg-primary);
+  background-color: var(--color-bg-primary);
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+// 链接样式
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: color.adjust($primary-color, $lightness: -10%);
+  }
+}
+
+// 按钮基础样式
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  outline: none;
+}
+
+// 图片样式
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// 滚动条样式
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-scrollbar-track);
+  border-radius: $radius-md;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-scrollbar-thumb);
+  border-radius: $radius-md;
+  
+  &:hover {
+    background: var(--color-scrollbar-thumb-hover);
+  }
+}
+
+// 选中文本样式
+::selection {
+  color: var(--color-fg-primary);
+  background-color: var(--color-selection-bg);
+}
+
+// 模态框背景
+.modal-overlay {
+  background-color: var(--color-modal-overlay);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background-color: var(--color-modal-bg);
+  border-radius: 8px;
+  border: 1px solid var(--color-border-primary);
+}
+
+// ============================================
+// 主题切换过渡动画
+// ============================================
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition: background-color 0.3s ease, 
+              border-color 0.3s ease, 
+              color 0.3s ease,
+              box-shadow 0.3s ease !important;
+}
