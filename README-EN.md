@@ -2,7 +2,7 @@
   <img src="/assets/banner.png" alt="Moodist Logo Banner" />
   <h2>Moodist-Vue 🌲</h2>
   <p>Ambient sounds for focus and calm.</p>
-  <a href="https://github.com/iss-tools/moodist-vue">Visit <strong>Moodist-Vue</strong></a>
+  <a href="https://moodist-vue.pages.dev/">Visit <strong>Moodist-Vue</strong></a>
 </div>
 
 ## Table of Contents
