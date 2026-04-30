@@ -28,7 +28,18 @@
 
             <!-- Global Volume -->
             <div class="volume-control">
-              <Volume2Icon class="volume-icon" />
+              <VolumeOffIcon
+                v-if="oldGlobalVolume != 0 && globalVolume == 0"
+                @click="setGlobalVolume(0)"
+                class="volume-icon"
+              >
+              </VolumeOffIcon>
+              <Volume2Icon
+                v-else
+                @click="setGlobalVolume(0)"
+                class="volume-icon"
+              />
+
               <input
                 type="range"
                 min="0"
@@ -101,6 +112,7 @@
 <script setup lang="ts">
 import {
   Volume2 as Volume2Icon,
+  VolumeOff as VolumeOffIcon,
   Sun as SunIcon,
   Moon as MoonIcon,
 } from "lucide-vue-next";
@@ -119,6 +131,16 @@ const store = useSoundStore();
 const themeStore = useThemeStore();
 const { globalVolume, noSelected, getFavorites } = storeToRefs(store);
 
+const oldGlobalVolume = ref(globalVolume.value);
+const setGlobalVolume = (volume: number) => {
+  console.log("Setting global volume to:", volume);
+  if (globalVolume.value === 0) {
+    globalVolume.value = oldGlobalVolume.value;
+    return;
+  }
+  oldGlobalVolume.value = globalVolume.value;
+  globalVolume.value = volume;
+};
 const allCategories = computed(() => {
   const categories = [];
 
