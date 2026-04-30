@@ -58,9 +58,10 @@ const isFavorite = computed(
 );
 const volume = computed(() => sounds.value[props.sound.id]?.volume ?? 0.5);
 
-const { play, stop, fadeOut, pause } = useSound(props.sound.src, {
+const { play, stop, fadeOut, pause, loadSound } = useSound(props.sound.src, {
   loop: true,
   volume: () => volume.value * globalVolume.value,
+  lazy: true, // 延迟加载声音文件
 });
 
 // Watch for selection and play/pause - matches React version logic
@@ -72,6 +73,8 @@ watch(
 
     // Play when selected and playing (matches React useEffect logic)
     if (selected && playing) {
+      // 懒加载模式下，选中时先加载声音文件
+      loadSound();
       play();
     } else {
       // Pause when not selected or not playing
