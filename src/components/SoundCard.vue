@@ -10,8 +10,9 @@
 
     <!-- Icon & Label -->
     <div class="content">
-      <div :class="['icon', { selected: isSelected }]">
-        <component :is="getIcon(sound.icon)" />
+      <div :class="['icon', { selected: isSelected, loading: isLoading }]">
+        <LoadingIcon v-if="isLoading" class="w-4 h-4 animate-spin" />
+        <component v-else :is="getIcon(sound.icon)" />
       </div>
       <span :class="['label', { selected: isSelected }]">
         {{ sound.label }}
@@ -35,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import { Heart as HeartIcon } from "lucide-vue-next";
+import { Heart as HeartIcon, Loader2 as LoadingIcon } from "lucide-vue-next";
 import * as LucideIcons from "lucide-vue-next";
 import { storeToRefs } from "pinia";
 import { computed, watch } from "vue";
@@ -58,11 +59,12 @@ const isFavorite = computed(
 );
 const volume = computed(() => sounds.value[props.sound.id]?.volume ?? 0.5);
 
-const { play, stop, fadeOut, pause, loadSound } = useSound(props.sound.src, {
-  loop: true,
-  volume: () => volume.value * globalVolume.value,
-  lazy: true, // 延迟加载声音文件
-});
+const { play, stop, fadeOut, pause, loadSound, isLoading, hasLoaded } =
+  useSound(props.sound.src, {
+    loop: true,
+    volume: () => volume.value * globalVolume.value,
+    lazy: true, // 延迟加载声音文件
+  });
 
 // Watch for selection and play/pause - matches React version logic
 watch(
@@ -157,18 +159,13 @@ const getIcon = (icon: any) => {
   padding: 6px;
   border-radius: 50%;
   transition: all 0.2s;
-  opacity: 0;
+  opacity: 1;
   background-color: var(--color-button-hover);
   border: none;
   cursor: pointer;
   color: var(--color-fg-muted);
 
-  .sound-card:hover & {
-    opacity: 1;
-  }
-
   &.favorite {
-    opacity: 1;
     color: #ef4444;
     background-color: rgba(239, 68, 68, 0.1);
   }
@@ -227,6 +224,10 @@ const getIcon = (icon: any) => {
         var(--color-bg-secondary)
       );
     }
+  }
+
+  &.loading {
+    color: var(--color-fg-secondary);
   }
 }
 
