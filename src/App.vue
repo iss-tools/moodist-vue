@@ -228,6 +228,18 @@ onMounted(() => {
     showSharedMix.value = true;
   }
 
+  // Analytics integration
+  const analyticsDomain = import.meta.env.VITE_ANALYTICS_DOMAIN;
+  const siteId = import.meta.env.VITE_ANALYTICS_SITE_ID;
+
+  if (analyticsDomain && siteId) {
+    const script = document.createElement("script");
+    script.defer = true;
+    script.src = `https://${analyticsDomain}/tracker.min.js`;
+    script.setAttribute("data-website-id", siteId);
+    document.body.appendChild(script);
+  }
+
   // Resume AudioContext on first user interaction if needed
   const handleFirstInteraction = () => {
     if (
