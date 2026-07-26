@@ -1,102 +1,102 @@
 <div align="center">
-  <img src="/assets/banner.png" alt="Moodist-Vue Logo Banner" />
+  <img src="/assets/banner.png" alt="Moodist Logo Banner" />
   <h2>Moodist-Vue 🌲</h2>
-  <p>专注与平静的环境音效。</p>
-  <a href="https://moodist-vue.pages.dev/">访问 <strong>Moodist-Vue</strong></a>
+  <p>Ambient sounds for focus and calm.</p>
+  <a href="https://moodist.aibyte.me/">Visit <strong>Moodist-Vue</strong></a>
 </div>
 
-## 目录
+## Table of Contents
 
-- ⚡ [功能特性](#功能特性)
-- 🎯 [使用场景](#使用场景)
-- 🧰 [技术栈](#技术栈)
-- 🔮 [命令](#命令)
-- 🚧 [贡献指南](#贡献指南)
-- ⭐ [支持 Moodist-Vue](#支持Moodist-vue)
-- 📜 [许可证](#许可证)
-- [中文](./README.md) | [English](./README-EN.md)
+- ⚡ [Features](#features)
+- 🧰 [Tools](#tools)
+- 🔮 [Commands](#commands)
+- 🚧 [Contributing](#contributing)
+- ⭐ [Support](#support-moodist)
+- 📜 [License](#license)
+- [English](./README.md) | [中文](./README-zh.md)
 
-## 功能特性
+## Features
 
-1. 🎵 超过 75 种环境音效，涵盖 8 个类别
-2. 📝 持久化音效选择
-3. ✈️ 与他人分享音效组合
-4. 🧰 自定义音效预设
-5. 🌙 音效睡眠定时器
-6. 📓 便签功能，快速记录笔记
-7. 🍅 Pomodoro 番茄钟
-8. ✅ 简单的待办事项列表（即将推出）
-9. ⏯️ 媒体控制
-10. ⌨️ 全键盘快捷键支持
-11. 🥷 隐私优先：不收集任何数据
-12. 💰 完全免费、开源且可自托管
+1. 🎵 Over 75 ambient sounds across 8 categories.
+2. 📝 Persistent sound selection.
+3. ✈️ Sharing sound selections with others.
+4. 🧰 Custom sound presets.
+5. 🌙 Sleep timer for sounds.
+6. 📓 Notepad for quick notes.
+7. 🍅 Pomodoro timer.
+8. ✅ Simple to-do list (soon).
+9. ⏯️ Media controls.
+10. ⌨️ Keyboard shortcuts for everything.
+11. 🥷 Privacy focused: no data collection.
+12. 💰 Completely free, open-source, and self-hostable.
+13. 🌍 i18n support for English and Chinese.
 
-## 使用场景
+## Use Cases
 
-### 免费环境音效
+### Free Ambient Sounds
 
-渴望从日常工作中获得宁静的逃避？需要完美的声景来提升专注力或助你进入平和的睡眠？Moodist-Vue 就是你的免费开源环境音效生成器！告别订阅和注册——通过 Moodist-Vue，你可以解锁一个舒缓而沉浸式的音频体验世界，完全免费。
+Craving a calming escape from the daily grind? Do you need the perfect soundscape to boost your focus or lull you into peaceful sleep? Look no further than Moodist, your free and open-source ambient sound generator! Ditch the subscriptions and registrations – with Moodist, you unlock a world of soothing and immersive audio experiences, entirely for free.
 
-### 精心策划的音效
+### Carefully Curated Sounds
 
-探索包含 75+ 种精心策划音效的广阔库。自然爱好者可以在潺潺溪流、节奏分明的海浪或噼啪作响的篝火中找到安宁。城市景观在咖啡馆的轻柔嗡嗡声、火车的节奏性嘈杂声或交通白噪音中焕发生机。对于那些寻求更深层次专注或放松的人，Moodist-Vue 提供双耳节拍和彩色噪声，旨在提升你的精神状态。
+Dive into an expansive library of 75+ carefully curated sounds. Nature lovers will find solace in the gentle murmur of streams, the rhythmic crash of waves, or the crackling warmth of a campfire. Cityscapes come alive with the soft hum of cafes, the rhythmic clatter of trains, or the calming white noise of traffic. And for those seeking deeper focus or relaxation, Moodist offers binaural beats and color noise designed to enhance your state of mind.
 
-### 创建你的声景
+### Create Your Soundscape
 
-Moodist-Vue 的美妙之处在于其简单性和可定制性。没有复杂的菜单或令人困惑的选项——只需选择你想要的音效，调整音量平衡，然后播放。想要将鸟儿轻柔的鸣叫与 soothing 的雨声融合？没问题！随意叠加多种音效，打造你个性化的声景绿洲。
+The beauty of Moodist lies in its simplicity and customization. No complex menus or confusing options – just choose your desired sounds, adjust the volume balance, and hit play. Want to blend the gentle chirping of birds with the soothing sound of rain? No problem! Layer as many sounds as you like to create your personalized soundscape oasis.
 
-### 适用于每个时刻的音效
+### Sounds for Every Moment
 
-无论你是想在一天的工作后放松身心，在工作中增强专注力，还是让自己进入平和的睡眠，Moodist-Vue 都有完美的声景等着你。最棒的是？它完全免费且开源，让你可以毫无附加条件地享受其益处。今天就开始使用 Moodist-Vue，发现你新的宁静与专注之地！
+Whether you're looking to unwind after a long day, enhance your focus during work, or lull yourself into a peaceful sleep, Moodist has the perfect soundscape waiting for you. The best part? It's completely free and open-source, so you can enjoy its benefits without any strings attached. Start using Moodist today and discover your new haven of tranquility and focus!
 
-### 音效类别
+### Sound Categories
 
-| 类别 | 音效 | 使用场景 |
+| Category | Sounds | Use Cases |
 |----------|--------|-----------|
-| 🌲 **自然** | 河流、海浪、篝火、风、呼啸的风、森林、雨林、山涧溪流 | 放松、冥想、自然爱好者 |
-| 🌧️ **雨声** | 小雨、大雨、雷声、窗上雨声、车顶雨声、帐篷雨声、远处雷声 | 专注、睡眠、平静 |
-| 🐾 **动物** | 鸟鸣、海鸥、蟋蟀、狼、猫头鹰、鲸鱼、蜂巢、鸡、牛、羊、狗、猫、青蛙、马、乌鸦 | 野生动物氛围、户外场景 |
-| 🏙️ **城市** | 高速公路、道路、救护车警报、繁忙街道、人群、交通、城市、霓虹灯 | 城市生活、背景噪音 |
-| 📍 **场所** | 咖啡馆、机场、教堂、寺庙、图书馆、办公室、酒吧、餐厅、建筑工地、学校、医院、村庄、农场、酒店、海滩、火车站、地铁、购物中心 | 工作环境、旅行、日常生活 |
-| 🚗 **交通** | 火车、火车内、飞机、潜艇、帆船、划艇、公交车、摩托车、车内、直升机 | 旅行氛围、通勤 |
-| 🔊 **物品** | 时钟滴答、风扇、电脑、打字机、洗衣机、洗碗机、吸尘器、吹风机、微波炉、烤箱、搅拌机、咖啡研磨机、水壶、烤面包机、打印机、扫描仪、传真机、电话铃声、门铃、闹钟 | 家务、办公室工作 |
-| 🔊 **噪声** | 白噪声、粉噪声、棕噪声、蓝噪声、绿噪声、紫噪声 | 助眠、专注、遮蔽 |
+| 🌲 **Nature** | River, Waves, Campfire, Wind, Howling Wind, Forest, Rainforest, Mountain Stream | Relaxation, Meditation, Nature Lovers |
+| 🌧️ **Rain** | Light Rain, Heavy Rain, Thunder, Rain on Window, Rain on Car Roof, Rain on Tent, Distant Thunder | Focus, Sleep, Calm |
+| 🐾 **Animals** | Birds, Seagulls, Crickets, Wolf, Owl, Whale, Beehive, Chicken, Cow, Sheep, Dog, Cat, Frog, Horse, Crow | Wildlife Ambiance, Outdoor Scenes |
+| 🏙️ **Urban** | Highway, Road, Ambulance Siren, Busy Street, Crowd, Traffic, City, Neon Sign | City Life, Background Noise |
+| 📍 **Places** | Cafe, Airport, Church, Temple, Library, Office, Bar, Restaurant, Construction Site, School, Hospital, Village, Farm, Hotel, Beach, Train Station, Subway, Shopping Mall | Work Environments, Travel, Daily Life |
+| 🚗 **Transport** | Train, Inside a Train, Airplane, Submarine, Sailboat, Rowing Boat, Bus, Motorcycle, Car Interior, Helicopter | Travel Ambiance, Commute |
+| 🔊 **Things** | Clock Ticking, Fan, Computer, Typewriter, Washing Machine, Dishwasher, Vacuum Cleaner, Hair Dryer, Microwave, Oven, Blender, Coffee Grinder, Kettle, Toaster, Printer, Scanner, Fax Machine, Phone Ringing, Doorbell, Alarm Clock | Household Chores, Office Work |
+| 🔊 **Noise** | White Noise, Pink Noise, Brown Noise, Blue Noise, Green Noise, Violet Noise | Sleep Aid, Focus, Masking |
 
-## 技术栈
+## Tools
 
-- ⚡ **TypeScript**: 编程语言
-- 🔨 **Vue 3**: UI 框架
-- 🎨 **UnoCSS + Tailwind CSS**: 实用优先样式
-- 🐻 **Pinia**: 状态管理
-- 🎭 **@vueuse/motion**: 动画库
-- 📕 **Lucide Vue Next**: 图标组件
-- 🔭 **ESLint**: 代码检查
-- 🧹 **Prettier**: 代码格式化
-- 🧰 **PostCSS**: CSS 转换
-- 🚀 **Vite**: 构建工具
+- ⚡ **TypeScript**: Programming Language
+- 🔨 **Vue 3**: UI Framework
+- 🎨 **UnoCSS + Tailwind CSS**: Utility-first Styling
+- 🐻 **Pinia**: State Management
+- 🎭 **@vueuse/motion**: Animation Library
+- 📕 **Lucide Vue Next**: Icon Components
+- 🔭 **ESLint**: Code Linting
+- 🧹 **Prettier**: Code Formatting
+- 🧰 **PostCSS**: CSS Transformations
+- 🚀 **Vite**: Build Tool
 
-## 命令
+## Commands
 
-- `pnpm dev`: 运行开发服务器
-- `pnpm build`: 构建生产版本
-- `pnpm preview`: 预览构建的应用
-- `pnpm lint`: 使用 ESLint 检查文件
+- `pnpm dev`: run development server
+- `pnpm build`: build for production
+- `pnpm preview`: preview the built app
+- `pnpm lint`: lint files using ESLint
 
-## 贡献指南
+## Contributing
 
-🚧 请查看 [CONTRIBUTING.md](CONTRIBUTING.md) 文件。
+🚧 Please check [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
-## 支持Moodist-Vue
+## Support Moodist-Vue
 
-⭐ 如果你喜欢这个项目，请给一颗星。
+⭐ Give a star if you liked this project.
 
-## 许可证
+## License
 
-本项目采用 **MIT 许可证** - 详见 [LICENSE](LICENSE) 文件。
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
-### ⚠️ 第三方资源
+### ⚠️ Third-Party Assets
 
-本项目中使用的一些音效来自第三方提供商，**受不同许可证约束**：
+Some sounds used in this project are sourced from third-party providers and **are subject to different licenses**:
 
-- 采用 **Pixabay 内容许可证** 的音效：[Pixabay 内容许可证](https://pixabay.com/service/license-summary/)
-- 采用 **CC0** 的音效：[Creative Commons Zero 许可证](https://creativecommons.org/publicdomain/zero/1.0/)
+- Sounds licensed under the **Pixabay Content License**: [Pixabay Content License](https://pixabay.com/service/license-summary/)
+- Sounds licensed under **CC0**: [Creative Commons Zero License](https://creativecommons.org/publicdomain/zero/1.0/)
