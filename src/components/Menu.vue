@@ -17,7 +17,9 @@ import {
   Music,
   ListMusic,
   CheckSquare,
+  Globe,
 } from "lucide-vue-next";
+import { useI18n } from 'vue-i18n';
 
 const props = defineProps<{
   noSelected: boolean;
@@ -25,10 +27,17 @@ const props = defineProps<{
 
 const emit = defineEmits(["open-modal", "shuffle"]);
 
+const { locale } = useI18n();
+
 const isOpen = ref(false);
 
 const toggleMenu = () => {
   isOpen.value = !isOpen.value;
+};
+
+const toggleLanguage = () => {
+  locale.value = locale.value === 'zh' ? 'en' : 'zh';
+  isOpen.value = false;
 };
 
 const handleAction = (action: string) => {
@@ -128,6 +137,10 @@ defineExpose({
           <Shuffle class="w-4 h-4" />
           {{ $t('menu.shuffle') }}
         </button>
+        <button @click="toggleLanguage" class="menu-item">
+          <Globe class="w-4 h-4" />
+          {{ locale === 'zh' ? 'English' : '中文' }}
+        </button>
         <button @click="handleAction('shortcuts')" class="menu-item">
           <Keyboard class="w-4 h-4" />
           {{ $t('menu.shortcuts') }}
@@ -172,9 +185,22 @@ defineExpose({
 .menu-dropdown {
   background-color: var(--color-modal-bg);
   border: 1px solid var(--color-border-primary);
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
   transition:
     background-color 0.3s ease,
     border-color 0.3s ease;
+}
+
+.menu-dropdown::-webkit-scrollbar {
+  width: 4px;
+}
+.menu-dropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+.menu-dropdown::-webkit-scrollbar-thumb {
+  background: var(--color-scrollbar-thumb);
+  border-radius: 10px;
 }
 
 .menu-section-title {
