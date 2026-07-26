@@ -6,26 +6,25 @@
         @click="togglePlayback"
         :class="['play-button', { playing: isPlaying }]"
       >
-        {{ isPlaying ? "Stop" : "Start" }}
+        {{ isPlaying ? $t('common.stop') : $t('common.start') }}
       </button>
     </div>
 
     <p class="isochronic-description">
-      Isochronic tones are single tones that are turned on and off rapidly. They
-      don't require headphones, unlike binaural beats.
+      {{ $t('components.isochronicDesc') }}
     </p>
 
     <!-- Presets -->
     <div class="presets-grid">
       <button
         v-for="preset in presets"
-        :key="preset.name"
+        :key="preset.id"
         @click="applyPreset(preset)"
-        :class="['preset-button', { active: selectedPreset === preset.name }]"
+        :class="['preset-button', { active: selectedPreset === preset.id }]"
       >
-        <div class="preset-name">{{ preset.name.split(" ")[0] }}</div>
-        <div class="preset-subtitle">
-          {{ preset.name.split(" ").slice(1).join(" ") }}
+        <div class="preset-name">{{ $t(`presets.${preset.id}`) }}</div>
+        <div class="preset-subtitle" v-if="preset.id !== 'custom'">
+          {{ $t(`presets.${preset.id}Desc`) }} {{ preset.freqLabel }}
         </div>
       </button>
     </div>
@@ -88,23 +87,24 @@ defineProps<{}>();
 interface Preset {
   baseFrequency: number;
   beatFrequency: number;
-  name: string;
+  id: string;
+  freqLabel?: string;
 }
 
 const presets: Preset[] = [
-  { baseFrequency: 100, beatFrequency: 2, name: "Delta (Deep Sleep) 2 Hz" },
-  { baseFrequency: 100, beatFrequency: 5, name: "Theta (Meditation) 5 Hz" },
-  { baseFrequency: 100, beatFrequency: 10, name: "Alpha (Relaxation) 10 Hz" },
-  { baseFrequency: 100, beatFrequency: 20, name: "Beta (Focus) 20 Hz" },
-  { baseFrequency: 100, beatFrequency: 40, name: "Gamma (Cognition) 40 Hz" },
-  { baseFrequency: 440, beatFrequency: 10, name: "Custom" },
+  { baseFrequency: 100, beatFrequency: 2, id: "delta", freqLabel: "2 Hz" },
+  { baseFrequency: 100, beatFrequency: 5, id: "theta", freqLabel: "5 Hz" },
+  { baseFrequency: 100, beatFrequency: 10, id: "alpha", freqLabel: "10 Hz" },
+  { baseFrequency: 100, beatFrequency: 20, id: "beta", freqLabel: "20 Hz" },
+  { baseFrequency: 100, beatFrequency: 40, id: "gamma", freqLabel: "40 Hz" },
+  { baseFrequency: 440, beatFrequency: 10, id: "custom" },
 ];
 
 const baseFrequency = ref(440);
 const beatFrequency = ref(10);
 const volume = ref(0.5);
 const isPlaying = ref(false);
-const selectedPreset = ref("Custom");
+const selectedPreset = ref("custom");
 
 let audioContext: AudioContext | null = null;
 let oscillator: OscillatorNode | null = null;
@@ -141,7 +141,7 @@ const togglePlayback = () => {
 };
 
 const applyPreset = (preset: Preset) => {
-  selectedPreset.value = preset.name;
+  selectedPreset.value = preset.id;
   baseFrequency.value = preset.baseFrequency;
   beatFrequency.value = preset.beatFrequency;
 };
@@ -151,11 +151,11 @@ watch(baseFrequency, (val) => {
   if (isPlaying.value && oscillator) {
     oscillator.frequency.setTargetAtTime(val, audioContext!.currentTime, 0.1);
     if (
-      selectedPreset.value !== "Custom" &&
+      selectedPreset.value !== "custom" &&
       val !==
-        presets.find((p) => p.name === selectedPreset.value)?.baseFrequency
+        presets.find((p) => p.id === selectedPreset.value)?.baseFrequency
     ) {
-      selectedPreset.value = "Custom";
+      selectedPreset.value = "custom";
     }
   }
 });
