@@ -123,13 +123,29 @@ import { sounds } from "./data/sounds";
 import { useSoundStore } from "./stores/sound";
 import { useThemeStore } from "./stores/theme";
 import { useShortcuts } from "./composables/useShortcuts";
-import { computed } from "vue";
+import { computed, watchEffect } from "vue";
+import { useI18n } from "vue-i18n";
 
 // Components are auto-imported by unplugin-vue-components
 
 const store = useSoundStore();
 const themeStore = useThemeStore();
 const { globalVolume, noSelected, getFavorites } = storeToRefs(store);
+const { t, locale } = useI18n();
+
+// Dynamic SEO
+watchEffect(() => {
+  document.title = t('seo.title');
+  document.documentElement.lang = locale.value;
+  
+  let metaDesc = document.querySelector('meta[name="description"]');
+  if (!metaDesc) {
+    metaDesc = document.createElement('meta');
+    metaDesc.setAttribute('name', 'description');
+    document.head.appendChild(metaDesc);
+  }
+  metaDesc.setAttribute('content', t('seo.description'));
+});
 
 const oldGlobalVolume = ref(globalVolume.value);
 const setGlobalVolume = (volume: number) => {

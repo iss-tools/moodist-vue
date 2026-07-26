@@ -82,6 +82,10 @@ export default {
     allSoundsUnselected: 'All sounds unselected',
     soundsShuffled: 'Sounds shuffled',
   },
+  seo: {
+    title: 'Moodist - Ambient Sounds for Focus and Calm',
+    description: 'Moodist is an open-source ambient sound generator featuring nature sounds, lofi music, white noise, Pomodoro timer, sleep timer, and more for focus, meditation, and relaxation.',
+  },
   breathing: {
     exercises: {
       '4-7-8': '4-7-8',

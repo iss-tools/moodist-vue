@@ -82,6 +82,10 @@ export default {
     allSoundsUnselected: '已取消选择所有声音',
     soundsShuffled: '已随机选择声音',
   },
+  seo: {
+    title: 'Moodist - 助您专注与放松的环境白噪音',
+    description: 'Moodist 是一款开源的环境声音生成器，提供大自然声音、Lofi 音乐、白噪音、番茄钟、睡眠定时等功能，非常适合专注、冥想和放松。',
+  },
   breathing: {
     exercises: {
       '4-7-8': '4-7-8',
