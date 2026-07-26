@@ -31,6 +31,8 @@ export default {
     binauralDesc: 'Binaural beats require headphones. They work by playing two slightly different frequencies in each ear, creating a third frequency in your brain.',
     isochronicDesc: "Isochronic tones are single tones that are turned on and off rapidly. They don't require headphones, unlike binaural beats.",
     lofiNoticeText: 'This feature plays music using embedded YouTube videos. By continuing, you agree to connect to YouTube, which may collect data in accordance with their privacy policy. We do not control or track this data.',
+    selectSoundFirst: 'Please select at least one sound first',
+    setTimerDuration: 'Please set a timer duration',
     categories: 'Categories',
     openSource: 'Open Source',
     openSourceDesc: 'Moodist is free and open-source!',

@@ -3,6 +3,7 @@ import { ref } from "vue";
 import { storeToRefs } from "pinia";
 import { useSleepTimerStore } from "../stores/sleepTimer";
 import { useSoundStore } from "../stores/sound";
+import { useI18n } from "vue-i18n";
 
 const props = defineProps<{}>();
 
@@ -10,6 +11,7 @@ const emit = defineEmits(["close"]);
 
 const store = useSleepTimerStore();
 const soundStore = useSoundStore();
+const { t } = useI18n();
 const {
   active: running,
   hours,
@@ -24,7 +26,7 @@ const startTimer = () => {
 
   // Check if any sound is selected
   if (soundStore.noSelected) {
-    errorMessage.value = "Please select at least one sound first";
+    errorMessage.value = t('components.selectSoundFirst');
     return;
   }
 
@@ -32,7 +34,7 @@ const startTimer = () => {
   const totalSeconds =
     (parseInt(hours.value) || 0) * 3600 + (parseInt(minutes.value) || 0) * 60;
   if (totalSeconds === 0) {
-    errorMessage.value = "Please set a timer duration";
+    errorMessage.value = t('components.setTimerDuration');
     return;
   }
 

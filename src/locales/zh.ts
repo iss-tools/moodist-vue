@@ -31,6 +31,8 @@ export default {
     binauralDesc: '双耳节拍需要戴耳机。它通过在每只耳朵里播放略微不同的频率，在你的大脑中创造出第三种频率。',
     isochronicDesc: '等时声是快速开启和关闭的单音。与双耳节拍不同，它们不需要耳机。',
     lofiNoticeText: '该功能通过嵌入的 YouTube 视频播放音乐。继续操作即表示您同意连接到 YouTube，YouTube 可能会根据其隐私政策收集数据。我们不控制或跟踪这些数据。',
+    selectSoundFirst: '请先选择至少一种声音',
+    setTimerDuration: '请设置定时时长',
     categories: '分类',
     openSource: '开源项目',
     openSourceDesc: 'Moodist 是免费且开源的！',
