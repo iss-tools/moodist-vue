@@ -30,7 +30,7 @@ const soundCount = computed(() => {
         <h1 class="title">
           {{ $t('common.ambientSounds') }}<span class="line">{{ $t('common.forFocusAndCalm') }}</span>
         </h1>
-        <h2 class="desc">{{ $t('common.freeAndOpenSource') }}</h2>
+        <!-- <h2 class="desc">{{ $t('common.freeAndOpenSource') }}</h2> -->
 
         <p class="sounds">
           <span aria-hidden="true" class="icon">
