@@ -4,15 +4,13 @@
 
     <div v-if="!isAccepted" class="lofi-notice">
       <p class="lofi-notice-text">
-        This feature plays music using embedded YouTube videos. By continuing,
-        you agree to connect to YouTube, which may collect data in accordance
-        with their privacy policy. We do not control or track this data.
+        {{ $t('components.lofiNoticeText') }}
       </p>
 
       <div class="lofi-notice-buttons">
         <button @click="$emit('close')" class="cancel-button">{{ $t('common.cancel') }}</button>
         <button @click="isAccepted = true" class="continue-button">
-          Continue
+          {{ $t('common.continue') }}
         </button>
       </div>
     </div>
