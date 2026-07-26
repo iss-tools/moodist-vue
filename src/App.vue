@@ -9,7 +9,7 @@
             <div class="logo">
               <div class="logo-inner"></div>
             </div>
-            <h1 class="app-title">Moodist-Vue</h1>
+            <h1 class="app-title">Moodist</h1>
           </div>
           <div class="header-actions">
             <!-- Theme Toggle Button -->
