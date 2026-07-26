@@ -29,28 +29,33 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
+import { useI18n } from "vue-i18n";
+
 defineProps<{}>();
 
-const shortcuts = {
-  General: [
-    { label: "Toggle Play/Pause", keys: ["Space"] },
-    { label: "Open Menu", keys: ["Shift", "M"] },
-    { label: "Share Mix", keys: ["Shift", "S"] },
-    { label: "Close Modal", keys: ["Esc"] },
+const { t } = useI18n();
+
+const shortcuts = computed(() => ({
+  [t('shortcuts.general')]: [
+    { label: t('shortcuts.togglePlayPause'), keys: ["Space"] },
+    { label: t('shortcuts.openMenu'), keys: ["Shift", "M"] },
+    { label: t('shortcuts.shareMix'), keys: ["Shift", "S"] },
+    { label: t('shortcuts.closeModal'), keys: ["Esc"] },
   ],
-  Tools: [
-    { label: "Pomodoro Timer", keys: ["Shift", "P"] },
-    { label: "Notepad", keys: ["Shift", "N"] },
-    { label: "Todo List", keys: ["Shift", "T"] },
-    { label: "Sleep Timer", keys: ["Shift", "Alt", "T"] },
-    { label: "Countdown Timer", keys: ["Shift", "C"] },
-    { label: "Your Presets", keys: ["Shift", "Alt", "P"] },
+  [t('shortcuts.tools')]: [
+    { label: t('menu.pomodoro'), keys: ["Shift", "P"] },
+    { label: t('menu.notepad'), keys: ["Shift", "N"] },
+    { label: t('menu.todo'), keys: ["Shift", "T"] },
+    { label: t('menu.sleepTimer'), keys: ["Shift", "Alt", "T"] },
+    { label: t('menu.countdown'), keys: ["Shift", "C"] },
+    { label: t('menu.presets'), keys: ["Shift", "Alt", "P"] },
   ],
-  Relaxation: [
-    { label: "Breathing Exercise", keys: ["Shift", "B"] },
-    { label: "Shortcuts", keys: ["Shift", "H"] },
+  [t('shortcuts.relaxation')]: [
+    { label: t('menu.breathing'), keys: ["Shift", "B"] },
+    { label: t('menu.shortcuts'), keys: ["Shift", "H"] },
   ],
-};
+}));
 </script>
 
 <style scoped lang="scss">

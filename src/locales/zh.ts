@@ -64,6 +64,15 @@ export default {
     sharedMixDesc: '有人与您分享了以下混音组合。您要覆盖当前的选择吗？',
     shareUrlDesc: '复制并发送以下链接，与他人分享您当前的声音选择和音量设置。',
   },
+  shortcuts: {
+    general: '通用',
+    tools: '工具',
+    relaxation: '放松',
+    togglePlayPause: '播放/暂停',
+    openMenu: '打开菜单',
+    shareMix: '分享组合',
+    closeModal: '关闭弹窗',
+  },
   breathing: {
     exercises: {
       '4-7-8': '4-7-8',

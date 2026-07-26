@@ -64,6 +64,15 @@ export default {
     sharedMixDesc: 'Someone has shared the following mix with you. Would you like to override your current selection?',
     shareUrlDesc: 'Copy and send the following link to share your current sound selection and volume settings with others.',
   },
+  shortcuts: {
+    general: 'General',
+    tools: 'Tools',
+    relaxation: 'Relaxation',
+    togglePlayPause: 'Toggle Play/Pause',
+    openMenu: 'Open Menu',
+    shareMix: 'Share Mix',
+    closeModal: 'Close Modal',
+  },
   breathing: {
     exercises: {
       '4-7-8': '4-7-8',
