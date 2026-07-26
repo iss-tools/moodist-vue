@@ -36,6 +36,24 @@ export default {
     sharedMixTitle: 'New sound mix detected!',
     sharedMixDesc: 'Someone has shared the following mix with you. Would you like to override your current selection?',
   },
+  breathing: {
+    exercises: {
+      '4-7-8': '4-7-8',
+      'BoxBreathing': 'Box Breathing',
+      'Resonant': 'Resonant'
+    },
+    phases: {
+      exhale: 'Exhale',
+      holdExhale: 'Hold',
+      holdInhale: 'Hold',
+      inhale: 'Inhale'
+    },
+    descriptions: {
+      '4-7-8': 'Calm the nervous system. Inhale for 4s, hold for 7s, exhale for 8s.',
+      'BoxBreathing': 'Focus and stress relief. Equal parts inhale, hold, exhale, hold.',
+      'Resonant': 'Maximize heart rate variability. Equal parts inhale and exhale.'
+    }
+  },
   pomodoro: {
     pomodoro: 'Pomodoro',
     short: 'Break',

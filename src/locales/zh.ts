@@ -36,6 +36,24 @@ export default {
     sharedMixTitle: '检测到新的混音组合！',
     sharedMixDesc: '有人与您分享了以下混音组合。您要覆盖当前的选择吗？',
   },
+  breathing: {
+    exercises: {
+      '4-7-8': '4-7-8',
+      'BoxBreathing': '箱式呼吸',
+      'Resonant': '共振呼吸'
+    },
+    phases: {
+      exhale: '呼气',
+      holdExhale: '屏息',
+      holdInhale: '屏息',
+      inhale: '吸气'
+    },
+    descriptions: {
+      '4-7-8': '平静神经系统。吸气 4 秒，屏息 7 秒，呼气 8 秒。',
+      'BoxBreathing': '专注与缓解压力。等量吸气、屏息、呼气、屏息。',
+      'Resonant': '最大化心率变异性。等量吸气与呼气。'
+    }
+  },
   pomodoro: {
     pomodoro: '番茄钟',
     short: '休息',

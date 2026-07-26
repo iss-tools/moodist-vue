@@ -11,7 +11,7 @@ const store = useCountdownStore();
 const alarm = useSoundEffect("/sounds/alarm.mp3");
 
 const hours = ref(0);
-const minutes = ref(0);
+const minutes = ref(30);
 const seconds = ref(0);
 const timeLeft = ref(0);
 const initialTime = ref(0);

@@ -15,7 +15,7 @@
         @click="selectedExercise = exercise"
         :class="['exercise-button', { active: selectedExercise === exercise }]"
       >
-        {{ exercise }}
+        {{ $t(`breathing.exercises.${exercise.replace(' ', '')}`) }}
       </button>
     </div>
 
@@ -34,13 +34,13 @@
         class="breathing-circle"
       >
         <span class="phase-label">
-          {{ PHASE_LABELS[currentPhase] }}
+          {{ $t(`breathing.phases.${currentPhase}`) }}
         </span>
       </div>
     </div>
 
     <p class="exercise-description">
-      {{ EXERCISE_DESCRIPTIONS[selectedExercise] }}
+      {{ $t(`breathing.descriptions.${selectedExercise.replace(' ', '')}`) }}
     </p>
   </div>
 </template>
@@ -65,21 +65,6 @@ const EXERCISE_DURATIONS: Record<Exercise, Partial<Record<Phase, number>>> = {
   "4-7-8": { exhale: 8, holdInhale: 7, inhale: 4 },
   "Box Breathing": { exhale: 4, holdExhale: 4, holdInhale: 4, inhale: 4 },
   Resonant: { exhale: 5, inhale: 5 },
-};
-
-const PHASE_LABELS: Record<Phase, string> = {
-  exhale: "Exhale",
-  holdExhale: "Hold",
-  holdInhale: "Hold",
-  inhale: "Inhale",
-};
-
-const EXERCISE_DESCRIPTIONS: Record<Exercise, string> = {
-  "4-7-8":
-    "Calm the nervous system. Inhale for 4s, hold for 7s, exhale for 8s.",
-  "Box Breathing":
-    "Focus and stress relief. Equal parts inhale, hold, exhale, hold.",
-  Resonant: "Maximize heart rate variability. Equal parts inhale and exhale.",
 };
 
 const selectedExercise = ref<Exercise>("4-7-8");
