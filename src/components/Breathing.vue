@@ -1,7 +1,7 @@
 <template>
   <div class="breathing-container">
     <div class="breathing-header">
-      <h2 class="breathing-title">Breathing</h2>
+      <h2 class="breathing-title">{{ $t('menu.breathing') }}</h2>
       <div class="breathing-timer">
         {{ formatTime(timer) }}
       </div>

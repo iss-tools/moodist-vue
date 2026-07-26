@@ -15,7 +15,7 @@
         <component v-else :is="getIcon(sound.icon)" />
       </div>
       <span :class="['label', { selected: isSelected }]">
-        {{ sound.label }}
+        {{ $t(`sounds.${sound.id}`) }}
       </span>
     </div>
 

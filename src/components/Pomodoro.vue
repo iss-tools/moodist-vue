@@ -54,7 +54,7 @@ const close = () => {
   <div>
     <div class="pomodoro-container">
       <header class="pomodoro-header">
-        <h2 class="pomodoro-title">Pomodoro Timer</h2>
+        <h2 class="pomodoro-title">{{ $t('menu.pomodoro') }}</h2>
         <button @click="openSettings" class="settings-button">
           <SettingsIcon class="w-5 h-5" />
         </button>
@@ -68,7 +68,7 @@ const close = () => {
           @click="selectedTab = tab.id"
           :class="['tab-button', { active: selectedTab === tab.id }]"
         >
-          {{ tab.label }}
+          {{ $t(`pomodoro.${tab.id}`) }}
         </button>
       </div>
 
@@ -83,7 +83,7 @@ const close = () => {
       <!-- Controls -->
       <div class="pomodoro-controls">
         <div class="completions-count">
-          {{ completions[selectedTab] }} completed
+          {{ completions[selectedTab] }} {{ $t('pomodoro.completed') }}
         </div>
         <div class="control-buttons">
           <button @click="restart" class="restart-button">

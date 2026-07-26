@@ -1,6 +1,6 @@
 <template>
   <div class="lofi-container">
-    <h2 class="lofi-title">Lofi Music Player</h2>
+    <h2 class="lofi-title">{{ $t('components.lofiPlayer') }}</h2>
 
     <div v-if="!isAccepted" class="lofi-notice">
       <p class="lofi-notice-text">
@@ -10,7 +10,7 @@
       </p>
 
       <div class="lofi-notice-buttons">
-        <button @click="$emit('close')" class="cancel-button">Cancel</button>
+        <button @click="$emit('close')" class="cancel-button">{{ $t('common.cancel') }}</button>
         <button @click="isAccepted = true" class="continue-button">
           Continue
         </button>

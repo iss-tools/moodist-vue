@@ -28,9 +28,9 @@ const soundCount = computed(() => {
         </div>
 
         <h1 class="title">
-          Ambient Sounds<span class="line">For Focus and Calm</span>
+          {{ $t('common.ambientSounds') }}<span class="line">{{ $t('common.forFocusAndCalm') }}</span>
         </h1>
-        <h2 class="desc">Free and Open-Source.</h2>
+        <h2 class="desc">{{ $t('common.freeAndOpenSource') }}</h2>
 
         <p class="sounds">
           <span aria-hidden="true" class="icon">
@@ -53,7 +53,7 @@ const soundCount = computed(() => {
               <path d="M22 10v3" />
             </svg>
           </span>
-          <span>{{ soundCount }} Sounds</span>
+          <span>{{ soundCount }} {{ $t('common.sounds') }}</span>
         </p>
       </div>
     </Container>

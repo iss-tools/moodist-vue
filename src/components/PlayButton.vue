@@ -8,7 +8,7 @@
     :disabled="noSelected"
   >
     <component :is="isPlaying ? PauseIcon : PlayIcon" class="w-5 h-5" />
-    <span>{{ isPlaying ? "Pause" : "Play" }}</span>
+    <span>{{ isPlaying ? $t('common.pause') : $t('common.play') }}</span>
   </button>
 </template>
 

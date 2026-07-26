@@ -1,6 +1,6 @@
 <template>
   <div class="share-container">
-    <h2 class="share-title">Share Selection</h2>
+    <h2 class="share-title">{{ $t('components.shareSelection') }}</h2>
 
     <p class="share-description">
       Copy and send the following link to share your current sound selection and

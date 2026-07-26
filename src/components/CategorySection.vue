@@ -6,7 +6,7 @@
         <component :is="getIcon(category.icon)" />
       </div>
     </div>
-    <h2 class="title">{{ category.title }}</h2>
+    <h2 class="title">{{ $t(`categories.${category.id}`) }}</h2>
 
     <div class="sounds-grid">
       <SoundCard

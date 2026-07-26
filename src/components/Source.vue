@@ -23,8 +23,8 @@ import Container from "./Container.vue";
           </div>
         </div>
 
-        <h2 class="title"><span>Open Source</span></h2>
-        <p class="desc">Moodist is free and open-source!</p>
+        <h2 class="title"><span>{{ $t('components.openSource') }}</span></h2>
+        <p class="desc">{{ $t('components.openSourceDesc') }}</p>
 
         <div class="button">
           <a

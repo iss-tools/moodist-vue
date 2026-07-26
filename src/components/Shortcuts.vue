@@ -1,6 +1,6 @@
 <template>
   <div class="shortcuts-container">
-    <h2 class="shortcuts-title">Keyboard Shortcuts</h2>
+    <h2 class="shortcuts-title">{{ $t('components.keyboardShortcuts') }}</h2>
 
     <div class="shortcuts-list">
       <div

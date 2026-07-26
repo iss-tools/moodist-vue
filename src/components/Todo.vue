@@ -1,7 +1,7 @@
 <template>
   <div class="todo-container">
     <div class="todo-header">
-      <h2 class="todo-title">Todo List</h2>
+      <h2 class="todo-title">{{ $t('menu.todo') }}</h2>
       <span v-if="todos.length > 0" class="todo-count">
         {{ doneCount }} / {{ todos.length }} Done
       </span>
@@ -12,7 +12,7 @@
       <input
         v-model="newTodo"
         type="text"
-        placeholder="What needs to be done?"
+        :placeholder="$t('components.addNewTask')"
         required
         class="todo-input"
       />

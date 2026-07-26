@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 import { sounds } from "../data/sounds";
 import Container from "./Container.vue";
+
+const { t } = useI18n();
 
 const soundCount = computed(() => {
   return sounds.categories.reduce(
@@ -10,24 +13,24 @@ const soundCount = computed(() => {
   );
 });
 
-const paragraphs = [
+const paragraphs = computed(() => [
   {
-    body: "Craving a calming escape from the daily grind? Do you need the perfect soundscape to boost your focus or lull you into peaceful sleep? Look no further than Moodist, your free and open-source ambient sound generator! Ditch the subscriptions and registrations – with Moodist, you unlock a world of soothing and immersive audio experiences, entirely for free.",
-    title: "Free Ambient Sounds",
+    body: t('about.p1Body'),
+    title: t('about.p1Title'),
   },
   {
-    body: `Dive into an expansive library of ${soundCount.value} carefully curated sounds. Nature lovers will find solace in the gentle murmur of streams, the rhythmic crash of waves, or the crackling warmth of a campfire. Cityscapes come alive with the soft hum of cafes, the rhythmic clatter of trains, or the calming white noise of traffic. And for those seeking deeper focus or relaxation, Moodist offers binaural beats and color noise designed to enhance your state of mind.`,
-    title: "Carefully Curated Sounds",
+    body: t('about.p2Body', { count: soundCount.value }),
+    title: t('about.p2Title'),
   },
   {
-    body: "The beauty of Moodist lies in its simplicity and customization. No complex menus or confusing options – just choose your desired sounds, adjust the volume balance, and hit play. Want to blend the gentle chirping of birds with the soothing sound of rain? No problem! Layer as many sounds as you like to create your personalized soundscape oasis.",
-    title: "Create Your Soundscape",
+    body: t('about.p3Body'),
+    title: t('about.p3Title'),
   },
   {
-    body: "Whether you're looking to unwind after a long day, enhance your focus during work, or lull yourself into a peaceful sleep, Moodist has the perfect soundscape waiting for you. The best part? It's completely free and open-source, so you can enjoy its benefits without any strings attached. Start using Moodist today and discover your new haven of tranquility and focus!",
-    title: "Sounds for Every Moment",
+    body: t('about.p4Body'),
+    title: t('about.p4Title'),
   },
-];
+]);
 
 const scrollToApp = () => {
   const app = document.getElementById("app");
@@ -53,7 +56,7 @@ const scrollToApp = () => {
         <p class="body">{{ paragraph.body }}</p>
       </div>
 
-      <button class="button" @click="scrollToApp">Use Moodist</button>
+      <button class="button" @click="scrollToApp">{{ $t('about.useMoodist') }}</button>
     </Container>
   </section>
 </template>

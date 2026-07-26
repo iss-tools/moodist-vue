@@ -56,9 +56,9 @@ const close = () => {
 <template>
   <div class="sleep-timer-container">
     <header class="sleep-timer-header">
-      <h2 class="sleep-timer-title">Sleep Timer</h2>
+      <h2 class="sleep-timer-title">{{ $t('menu.sleepTimer') }}</h2>
       <p class="sleep-timer-description">
-        Set a timer to automatically stop the sounds.
+        {{ $t('components.setSleepTimer') }}
       </p>
     </header>
 
@@ -68,7 +68,7 @@ const close = () => {
       </div>
       <div class="time-inputs">
         <div class="time-input-group">
-          <label class="time-label">Hours</label>
+          <span class="time-label">{{ $t('components.hours') }}</span>
           <input
             v-model="hours"
             type="number"
@@ -78,7 +78,7 @@ const close = () => {
           />
         </div>
         <div class="time-input-group">
-          <label class="time-label">Minutes</label>
+          <span class="time-label">{{ $t('components.minutes') }}</span>
           <input
             v-model="minutes"
             type="number"
@@ -88,7 +88,7 @@ const close = () => {
           />
         </div>
       </div>
-      <button @click="startTimer" class="start-button">Start Timer</button>
+      <button @click="startTimer" class="start-button">{{ $t('common.start') }}</button>
     </div>
 
     <div v-else class="sleep-timer-running-section">
@@ -98,8 +98,8 @@ const close = () => {
         </div>
       </div>
       <div class="timer-buttons">
-        <button @click="stopTimer" class="pause-button">Pause</button>
-        <button @click="resetTimer" class="reset-button">Reset</button>
+        <button @click="stopTimer" class="pause-button">{{ $t('common.pause') }}</button>
+        <button @click="resetTimer" class="reset-button">{{ $t('common.reset') }}</button>
       </div>
     </div>
   </div>

@@ -1,12 +1,11 @@
 <template>
   <div class="space-y-6">
     <h2 class="text-2xl font-bold" style="color: var(--color-fg-primary)">
-      New sound mix detected!
+      {{ $t('components.sharedMixTitle') }}
     </h2>
 
     <p class="text-sm leading-relaxed" style="color: var(--color-fg-muted)">
-      Someone has shared the following mix with you. Would you like to override
-      your current selection?
+      {{ $t('components.sharedMixDesc') }}
     </p>
 
     <div class="space-y-2 max-h-[40vh] overflow-y-auto pr-2 custom-scrollbar">
@@ -39,7 +38,7 @@
           color: var(--color-fg-primary);
         "
       >
-        Cancel
+        {{ $t('common.cancel') }}
       </button>
       <button
         @click="handleOverride"

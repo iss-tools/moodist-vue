@@ -94,8 +94,8 @@ const close = () => {
 <template>
   <div class="countdown-container">
     <header class="countdown-header">
-      <h2 class="countdown-title">Countdown Timer</h2>
-      <p class="countdown-description">Super simple countdown timer.</p>
+      <h2 class="countdown-title">{{ $t('menu.countdown') }}</h2>
+      <p class="countdown-description">{{ $t('components.superSimpleCountdown') }}</p>
     </header>
 
     <div v-if="isFormVisible" class="countdown-form-section">
@@ -108,7 +108,7 @@ const close = () => {
             placeholder="HH"
             class="time-input"
           />
-          <span class="time-label">Hours</span>
+          <span class="time-label">{{ $t('components.hours') }}</span>
         </div>
         <span class="time-separator">:</span>
         <div class="time-input-group">
@@ -120,7 +120,7 @@ const close = () => {
             placeholder="MM"
             class="time-input"
           />
-          <span class="time-label">Minutes</span>
+          <span class="time-label">{{ $t('components.minutes') }}</span>
         </div>
         <span class="time-separator">:</span>
         <div class="time-input-group">
@@ -132,11 +132,11 @@ const close = () => {
             placeholder="SS"
             class="time-input"
           />
-          <span class="time-label">Seconds</span>
+          <span class="time-label">{{ $t('components.seconds') }}</span>
         </div>
       </div>
 
-      <button @click="handleStart" class="start-button">Start</button>
+      <button @click="handleStart" class="start-button">{{ $t('common.start') }}</button>
     </div>
 
     <div v-else class="countdown-running-section">
@@ -148,9 +148,9 @@ const close = () => {
       </div>
 
       <div class="timer-buttons">
-        <button @click="handleBack" class="back-button">Back</button>
+        <button @click="handleBack" class="back-button">{{ $t('common.back') }}</button>
         <button @click="toggleTimer" class="toggle-button">
-          {{ isActive ? "Pause" : "Start" }}
+          {{ isActive ? $t('common.pause') : $t('common.start') }}
         </button>
       </div>
     </div>

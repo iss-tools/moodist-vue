@@ -69,56 +69,56 @@ defineExpose({
         v-if="isOpen"
         class="absolute right-0 mt-2 w-64 rounded-xl shadow-2xl py-2 z-50 menu-dropdown"
       >
-        <div class="menu-section-title">Productivity</div>
+        <div class="menu-section-title">{{ $t('menu.productivity') }}</div>
         <button @click="handleAction('pomodoro')" class="menu-item">
           <Timer class="w-4 h-4" />
-          Pomodoro Timer
+          {{ $t('menu.pomodoro') }}
           <span class="menu-shortcut">Shift + P</span>
         </button>
         <button @click="handleAction('notepad')" class="menu-item">
           <FileText class="w-4 h-4" />
-          Notepad
+          {{ $t('menu.notepad') }}
           <span class="menu-shortcut">Shift + N</span>
         </button>
         <button @click="handleAction('todo')" class="menu-item">
           <CheckSquare class="w-4 h-4" />
-          Todo List
+          {{ $t('menu.todo') }}
           <span class="menu-shortcut">Shift + T</span>
         </button>
         <button @click="handleAction('countdown')" class="menu-item">
           <Timer class="w-4 h-4" />
-          Countdown Timer
+          {{ $t('menu.countdown') }}
           <span class="menu-shortcut">Shift + C</span>
         </button>
 
         <div class="menu-divider"></div>
 
-        <div class="menu-section-title">Relaxation</div>
+        <div class="menu-section-title">{{ $t('menu.relaxation') }}</div>
         <button @click="handleAction('breathing')" class="menu-item">
           <Wind class="w-4 h-4" />
-          Breathing Exercise
+          {{ $t('menu.breathing') }}
           <span class="menu-shortcut">Shift + B</span>
         </button>
         <button @click="handleAction('binaural')" class="menu-item">
           <Waves class="w-4 h-4" />
-          Binaural Beats
+          {{ $t('menu.binaural') }}
         </button>
         <button @click="handleAction('isochronic')" class="menu-item">
           <Zap class="w-4 h-4" />
-          Isochronic Tones
+          {{ $t('menu.isochronic') }}
         </button>
         <button @click="handleAction('lofi')" class="menu-item">
           <Music class="w-4 h-4" />
-          Lofi Music
+          {{ $t('menu.lofi') }}
         </button>
         <button @click="handleAction('sleep-timer')" class="menu-item">
           <Moon class="w-4 h-4" />
-          Sleep Timer
+          {{ $t('menu.sleepTimer') }}
           <span class="menu-shortcut">Shift + S</span>
         </button>
         <button @click="handleAction('presets')" class="menu-item">
           <ListMusic class="w-4 h-4" />
-          Your Presets
+          {{ $t('menu.presets') }}
           <span class="menu-shortcut">Shift + Alt + P</span>
         </button>
 
@@ -126,11 +126,11 @@ defineExpose({
 
         <button @click="handleAction('shuffle')" class="menu-item">
           <Shuffle class="w-4 h-4" />
-          Shuffle Sounds
+          {{ $t('menu.shuffle') }}
         </button>
         <button @click="handleAction('shortcuts')" class="menu-item">
           <Keyboard class="w-4 h-4" />
-          Shortcuts
+          {{ $t('menu.shortcuts') }}
           <span class="menu-shortcut">Shift + H</span>
         </button>
         <button
@@ -140,7 +140,7 @@ defineExpose({
           :class="{ 'opacity-30 cursor-not-allowed': noSelected }"
         >
           <Share2 class="w-4 h-4" />
-          Share Mix
+          {{ $t('menu.shareMix') }}
         </button>
       </div>
     </Transition>

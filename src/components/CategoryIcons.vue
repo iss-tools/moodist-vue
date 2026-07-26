@@ -21,7 +21,7 @@ const goto = (id: string) => {
 <template>
   <Container>
     <div class="wrapper">
-      <h3 class="title">Categories</h3>
+      <h3 class="title">{{ $t('components.categories') }}</h3>
       <div class="category-icons-wrapper">
         <button
           v-for="category in categories"

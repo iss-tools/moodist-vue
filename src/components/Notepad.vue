@@ -39,7 +39,7 @@ const close = () => {
 <template>
   <div class="notepad-container">
     <header class="notepad-header">
-      <h2 class="notepad-title">Your Note</h2>
+      <h2 class="notepad-title">{{ $t('menu.notepad') }}</h2>
       <div class="notepad-actions">
         <button
           @click="copy(store.note)"
@@ -71,7 +71,7 @@ const close = () => {
       ref="textareaRef"
       v-model="store.note"
       class="notepad-textarea"
-      placeholder="What is on your mind?"
+      :placeholder="$t('components.startTyping')"
       spellcheck="false"
       dir="auto"
     ></textarea>

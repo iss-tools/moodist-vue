@@ -1,10 +1,10 @@
 <template>
   <div class="presets-container">
-    <h2 class="presets-title">Presets</h2>
+    <h2 class="presets-title">{{ $t('menu.presets') }}</h2>
 
     <!-- New Preset -->
     <div class="new-preset-section">
-      <h3 class="section-title">New Preset</h3>
+      <h3 class="section-title">{{ $t('components.newPreset') }}</h3>
       <form
         @submit.prevent="handleSubmit"
         :class="['preset-form', { disabled: noSelected }]"

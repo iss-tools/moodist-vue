@@ -43,7 +43,7 @@ const handleCancel = () => {
   <Modal :show="show" @close="handleCancel">
     <div class="space-y-6">
       <h2 class="text-xl font-bold" style="color: var(--color-fg-primary)">
-        Change Times
+        {{ $t('pomodoro.changeTimes') }}
       </h2>
 
       <form @submit.prevent="handleSubmit" class="space-y-4">
@@ -54,12 +54,12 @@ const handleCancel = () => {
           >
             {{
               key === "pomodoro"
-                ? "Pomodoro"
+                ? $t('pomodoro.pomodoro')
                 : key === "short"
-                  ? "Short Break"
-                  : "Long Break"
+                  ? $t('pomodoro.shortBreak')
+                  : $t('pomodoro.longBreak')
             }}
-            <span style="color: var(--color-fg-muted)">(minutes)</span>
+            <span style="color: var(--color-fg-muted)">({{ $t('pomodoro.minutes') }})</span>
           </label>
           <input
             type="number"
@@ -83,7 +83,7 @@ const handleCancel = () => {
             @click="handleCancel"
             class="flex-1 py-2 px-4 rounded-lg font-medium transition-colors cancel-button"
           >
-            Cancel
+            {{ $t('common.cancel') }}
           </button>
           <button
             type="submit"
@@ -93,7 +93,7 @@ const handleCancel = () => {
               color: var(--color-fg-inverse);
             "
           >
-            Save
+            {{ $t('common.save') }}
           </button>
         </div>
       </form>

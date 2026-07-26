@@ -1,7 +1,7 @@
 <template>
   <div class="isochronic-container">
     <div class="isochronic-header">
-      <h2 class="isochronic-title">Isochronic Tones</h2>
+      <h2 class="isochronic-title">{{ $t('menu.isochronic') }}</h2>
       <button
         @click="togglePlayback"
         :class="['play-button', { playing: isPlaying }]"
@@ -34,7 +34,7 @@
     <div class="controls-section">
       <div class="control-group">
         <div class="control-header">
-          <span>Base Frequency</span>
+          <span>{{ $t('components.baseFrequency') }}</span>
           <span class="control-value">{{ baseFrequency }} Hz</span>
         </div>
         <input
@@ -49,7 +49,7 @@
 
       <div class="control-group">
         <div class="control-header">
-          <span>Beat Frequency</span>
+          <span>{{ $t('components.beatFrequency') }}</span>
           <span class="control-value">{{ beatFrequency }} Hz</span>
         </div>
         <input
@@ -64,7 +64,7 @@
 
       <div class="control-group">
         <div class="control-header">
-          <span>Volume</span>
+          <span>{{ $t('components.volume') }}</span>
           <span class="control-value">{{ Math.round(volume * 100) }}%</span>
         </div>
         <input
