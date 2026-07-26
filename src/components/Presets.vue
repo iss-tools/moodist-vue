@@ -55,8 +55,9 @@
             <TrashIcon class="w-4 h-4" />
           </button>
 
-          <button @click="applyPreset(preset)" class="preset-play-button">
-            <PlayIcon class="w-4 h-4 fill-current" />
+          <button @click="togglePreset(preset)" class="preset-play-button">
+            <PauseIcon v-if="isPresetActive(preset) && isPlaying" class="w-4 h-4 fill-current" />
+            <PlayIcon v-else class="w-4 h-4 fill-current" />
           </button>
         </div>
       </div>
@@ -67,7 +68,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { storeToRefs } from "pinia";
-import { Trash2 as TrashIcon, Play as PlayIcon } from "lucide-vue-next";
+import { Trash2 as TrashIcon, Play as PlayIcon, Pause as PauseIcon } from "lucide-vue-next";
 import { usePresetStore } from "../stores/preset";
 import { useSoundStore } from "../stores/sound";
 
@@ -79,7 +80,7 @@ const presetStore = usePresetStore();
 const { presets } = storeToRefs(presetStore);
 
 const soundStore = useSoundStore();
-const { noSelected, sounds } = storeToRefs(soundStore);
+const { noSelected, sounds, isPlaying } = storeToRefs(soundStore);
 
 const name = ref("");
 
@@ -102,10 +103,20 @@ const handleSubmit = () => {
   name.value = "";
 };
 
-const applyPreset = (preset: any) => {
-  soundStore.override(preset.sounds);
-  soundStore.play();
-  emit("close");
+const isPresetActive = (preset: any) => {
+  const activeIds = Object.keys(sounds.value).filter(id => sounds.value[id].isSelected);
+  const presetIds = Object.keys(preset.sounds);
+  if (activeIds.length !== presetIds.length) return false;
+  return activeIds.every(id => presetIds.includes(id));
+};
+
+const togglePreset = (preset: any) => {
+  if (isPresetActive(preset)) {
+    soundStore.togglePlay();
+  } else {
+    soundStore.override(preset.sounds);
+    soundStore.play();
+  }
 };
 </script>
 

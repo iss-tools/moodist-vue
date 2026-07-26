@@ -9,7 +9,7 @@
         <PauseIcon v-if="isPlaying" class="icon-svg" />
         <PlayIcon v-else class="icon-svg" />
       </span>
-      {{ isPlaying ? "Pause" : "Play" }}
+      {{ isPlaying ? $t('common.pause') : $t('common.play') }}
     </button>
 
     <button
@@ -17,7 +17,7 @@
       :class="['action-button', { disabled: locked }]"
       @click="handleUnselectToggle"
       :disabled="locked"
-      :title="hasHistory ? 'Restore unselected sounds' : 'Unselect all sounds'"
+      :title="hasHistory ? $t('floating.restoreSounds') : $t('floating.unselectAll')"
     >
       <UndoIcon v-if="hasHistory" class="icon-svg" />
       <TrashIcon v-else class="icon-svg" />
@@ -27,7 +27,7 @@
       :class="['action-button', { disabled: locked }]"
       @click="handleShuffle"
       :disabled="locked"
-      title="Shuffle sounds"
+      :title="$t('floating.shuffleSounds')"
     >
       <ShuffleIcon class="icon-svg" />
     </button>
@@ -46,6 +46,7 @@ import { storeToRefs } from "pinia";
 import { computed } from "vue";
 import { useSoundStore } from "../stores/sound";
 import { useSnackbar } from "../composables/useSnackbar";
+import { useI18n } from "vue-i18n";
 
 const PlayIcon = Play;
 const PauseIcon = Pause;
@@ -53,13 +54,14 @@ const PauseIcon = Pause;
 const store = useSoundStore();
 const { show: showSnackbar } = useSnackbar();
 const { noSelected, history, locked, isPlaying } = storeToRefs(store);
+const { t } = useI18n();
 
 const hasHistory = computed(() => !!history.value);
 
 const handleToggle = () => {
   if (locked.value) return;
   if (noSelected.value) {
-    showSnackbar("Please first select a sound to play.");
+    showSnackbar(t('floating.pleaseSelectSound'));
     return;
   }
   store.togglePlay();
@@ -69,17 +71,17 @@ const handleUnselectToggle = () => {
   if (locked.value) return;
   if (hasHistory.value) {
     store.restoreHistory();
-    showSnackbar("Sounds restored");
+    showSnackbar(t('floating.soundsRestored'));
   } else if (!noSelected.value) {
     store.unselectAll(true);
-    showSnackbar("All sounds unselected");
+    showSnackbar(t('floating.allSoundsUnselected'));
   }
 };
 
 const handleShuffle = () => {
   if (locked.value) return;
   store.shuffle();
-  showSnackbar("Sounds shuffled");
+  showSnackbar(t('floating.soundsShuffled'));
 };
 </script>
 

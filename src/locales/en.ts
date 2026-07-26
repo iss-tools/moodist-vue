@@ -73,6 +73,15 @@ export default {
     shareMix: 'Share Mix',
     closeModal: 'Close Modal',
   },
+  floating: {
+    restoreSounds: 'Restore unselected sounds',
+    unselectAll: 'Unselect all sounds',
+    shuffleSounds: 'Shuffle sounds',
+    pleaseSelectSound: 'Please first select a sound to play.',
+    soundsRestored: 'Sounds restored',
+    allSoundsUnselected: 'All sounds unselected',
+    soundsShuffled: 'Sounds shuffled',
+  },
   breathing: {
     exercises: {
       '4-7-8': '4-7-8',

@@ -73,6 +73,15 @@ export default {
     shareMix: '分享组合',
     closeModal: '关闭弹窗',
   },
+  floating: {
+    restoreSounds: '恢复未选择的声音',
+    unselectAll: '取消选择所有声音',
+    shuffleSounds: '随机选择声音',
+    pleaseSelectSound: '请先选择一个声音来播放。',
+    soundsRestored: '声音已恢复',
+    allSoundsUnselected: '已取消选择所有声音',
+    soundsShuffled: '已随机选择声音',
+  },
   breathing: {
     exercises: {
       '4-7-8': '4-7-8',
