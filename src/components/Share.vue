@@ -3,8 +3,7 @@
     <h2 class="share-title">{{ $t('components.shareSelection') }}</h2>
 
     <p class="share-description">
-      Copy and send the following link to share your current sound selection and
-      volume settings with others.
+      {{ $t('components.shareUrlDesc') }}
     </p>
 
     <div class="share-url-section">
@@ -14,7 +13,7 @@
       <button @click="handleCopy" class="share-copy-button">
         <Check v-if="copying" class="w-4 h-4" />
         <Copy v-else class="w-4 h-4" />
-        {{ copying ? "Copied" : "Copy" }}
+        {{ copying ? $t('common.copied') : $t('common.copy') }}
       </button>
     </div>
   </div>

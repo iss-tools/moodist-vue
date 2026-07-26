@@ -12,17 +12,17 @@
         <input
           v-model="name"
           type="text"
-          placeholder="Preset's Name"
+          :placeholder="$t('components.presetNamePlaceholder')"
           required
           class="preset-input"
           :disabled="noSelected"
         />
         <button type="submit" class="preset-save-button" :disabled="noSelected">
-          Save
+          {{ $t('common.save') }}
         </button>
       </form>
       <p v-if="noSelected" class="preset-hint">
-        To make a preset, first select some sounds.
+        {{ $t('components.presetHint') }}
       </p>
     </div>
 
@@ -31,11 +31,11 @@
     <!-- Presets List -->
     <div class="presets-list-section">
       <h3 class="section-title">
-        Your Presets {{ presets.length > 0 ? `(${presets.length})` : "" }}
+        {{ $t('components.yourPresets') }} {{ presets.length > 0 ? `(${presets.length})` : "" }}
       </h3>
 
       <div v-if="presets.length === 0" class="presets-empty">
-        You don't have any presets yet.
+        {{ $t('components.presetsEmpty') }}
       </div>
 
       <div v-else class="presets-list">
@@ -45,7 +45,7 @@
             :value="preset.label"
             @input="(e) => handleNameChange(preset.id, e)"
             class="preset-name-input"
-            placeholder="Untitled"
+            :placeholder="$t('components.untitled')"
           />
 
           <button

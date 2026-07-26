@@ -13,6 +13,9 @@ export default {
     stop: 'Stop',
     back: 'Back',
     continue: 'Continue',
+    copy: 'Copy',
+    copied: 'Copied',
+    applyMix: 'Apply Mix',
   },
   presets: {
     delta: 'Delta',
@@ -33,6 +36,11 @@ export default {
     lofiNoticeText: 'This feature plays music using embedded YouTube videos. By continuing, you agree to connect to YouTube, which may collect data in accordance with their privacy policy. We do not control or track this data.',
     selectSoundFirst: 'Please select at least one sound first',
     setTimerDuration: 'Please set a timer duration',
+    presetNamePlaceholder: "Preset's Name",
+    presetHint: 'To make a preset, first select some sounds.',
+    yourPresets: 'Your Presets',
+    presetsEmpty: "You don't have any presets yet.",
+    untitled: 'Untitled',
     categories: 'Categories',
     openSource: 'Open Source',
     openSourceDesc: 'Moodist is free and open-source!',
@@ -54,6 +62,7 @@ export default {
     lofiPlayer: 'Lofi Music Player',
     sharedMixTitle: 'New sound mix detected!',
     sharedMixDesc: 'Someone has shared the following mix with you. Would you like to override your current selection?',
+    shareUrlDesc: 'Copy and send the following link to share your current sound selection and volume settings with others.',
   },
   breathing: {
     exercises: {

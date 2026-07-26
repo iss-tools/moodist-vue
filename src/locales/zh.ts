@@ -13,6 +13,9 @@ export default {
     stop: '停止',
     back: '返回',
     continue: '继续',
+    copy: '复制',
+    copied: '已复制',
+    applyMix: '应用组合',
   },
   presets: {
     delta: 'Delta',
@@ -33,6 +36,11 @@ export default {
     lofiNoticeText: '该功能通过嵌入的 YouTube 视频播放音乐。继续操作即表示您同意连接到 YouTube，YouTube 可能会根据其隐私政策收集数据。我们不控制或跟踪这些数据。',
     selectSoundFirst: '请先选择至少一种声音',
     setTimerDuration: '请设置定时时长',
+    presetNamePlaceholder: '预设名称',
+    presetHint: '要创建预设，请先选择一些声音。',
+    yourPresets: '你的预设',
+    presetsEmpty: '你还没有任何预设。',
+    untitled: '未命名',
     categories: '分类',
     openSource: '开源项目',
     openSourceDesc: 'Moodist 是免费且开源的！',
@@ -54,6 +62,7 @@ export default {
     lofiPlayer: 'Lofi 音乐播放器',
     sharedMixTitle: '检测到新的混音组合！',
     sharedMixDesc: '有人与您分享了以下混音组合。您要覆盖当前的选择吗？',
+    shareUrlDesc: '复制并发送以下链接，与他人分享您当前的声音选择和音量设置。',
   },
   breathing: {
     exercises: {

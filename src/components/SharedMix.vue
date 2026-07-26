@@ -48,7 +48,7 @@
           color: var(--color-fg-inverse);
         "
       >
-        Apply Mix
+        {{ $t('common.applyMix') }}
       </button>
     </div>
   </div>
