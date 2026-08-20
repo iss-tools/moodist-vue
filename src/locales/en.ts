@@ -84,7 +84,8 @@ export default {
   },
   seo: {
     title: 'Moodist - Ambient Sounds for Focus and Calm',
-    description: 'Moodist is an open-source ambient sound generator featuring nature sounds, lofi music, white noise, Pomodoro timer, sleep timer, and more for focus, meditation, and relaxation.',
+    description: 'Moodist 是一款开源的环境声音生成器，提供大自然声音、Lofi 音乐、白噪音、番茄钟等功能，非常适合专注、冥想和放松。Moodist is an open-source ambient sound generator featuring nature sounds, lofi music, white noise, Pomodoro timer, and more for focus, meditation, and relaxation.',
+    keywords: '环境音, 白噪音, 专注, 冥想, 放松, 效率, 番茄钟, lofi 音乐, 自然声音, 免费, ambient sounds, white noise, focus, meditation, relaxation, productivity, pomodoro timer, lofi music, nature sounds, sleep',
   },
   breathing: {
     exercises: {

@@ -125,6 +125,7 @@ import { useThemeStore } from "./stores/theme";
 import { useShortcuts } from "./composables/useShortcuts";
 import { computed, watchEffect } from "vue";
 import { useI18n } from "vue-i18n";
+import { useHead } from "@unhead/vue";
 
 // Components are auto-imported by unplugin-vue-components
 
@@ -134,17 +135,21 @@ const { globalVolume, noSelected, getFavorites } = storeToRefs(store);
 const { t, locale } = useI18n();
 
 // Dynamic SEO
-watchEffect(() => {
-  document.title = t('seo.title');
-  document.documentElement.lang = locale.value;
-  
-  let metaDesc = document.querySelector('meta[name="description"]');
-  if (!metaDesc) {
-    metaDesc = document.createElement('meta');
-    metaDesc.setAttribute('name', 'description');
-    document.head.appendChild(metaDesc);
-  }
-  metaDesc.setAttribute('content', t('seo.description'));
+useHead({
+  title: () => t('seo.title'),
+  htmlAttrs: {
+    lang: () => locale.value
+  },
+  meta: [
+    {
+      name: 'description',
+      content: () => t('seo.description')
+    },
+    {
+      name: 'keywords',
+      content: () => t('seo.keywords')
+    }
+  ]
 });
 
 const oldGlobalVolume = ref(globalVolume.value);
