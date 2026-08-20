@@ -11,6 +11,7 @@ module.exports = {
     '@vue/eslint-config-typescript',
     './.eslintrc-auto-import.json'
   ],
+  ignorePatterns: ['dist', 'node_modules'],
   parserOptions: {
     ecmaVersion: 'latest',
   },

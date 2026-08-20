@@ -10,6 +10,11 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
     "prepare": "husky"
   },
+  "lint-staged": {
+    "*.{vue,js,ts,jsx,tsx,cjs,mjs}": [
+      "eslint --fix"
+    ]
+  },
   "dependencies": {
     "@unhead/vue": "^3.3.2",
     "@vueuse/motion": "^3.0.3",

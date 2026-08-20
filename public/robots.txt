@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://moodist.pptboard.com/sitemap.xml

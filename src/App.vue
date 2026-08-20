@@ -102,6 +102,10 @@
         <Container class="footer-content">
           <p class="footer-text">
             &copy; 2026 Moodist. Built with Vue 3 & Tailwind.
+            <span style="margin: 0 8px;">|</span>
+            <a href="/privacy.html" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; opacity: 0.8; transition: opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.8">
+              Privacy Policy / 隐私政策
+            </a>
           </p>
         </Container>
       </footer>
