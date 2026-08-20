@@ -39,6 +39,7 @@ export function useSound(
       src: [source],
       loop: options.loop ?? false,
       volume: toValue(options.volume) ?? 0.5,
+      html5: true, // 强制使用 HTML5 Audio，iOS PWA 后台播放必须项
       onload: () => {
         console.log(`Loaded sound: ${source}`);
         hasLoaded.value = true;
