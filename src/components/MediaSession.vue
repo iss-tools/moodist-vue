@@ -57,6 +57,21 @@ onMounted(() => {
   if (isPlaying.value) {
     startAudio();
   }
+
+  // iOS Safari Audio Unlock Hack
+  const unlockAudio = () => {
+    if (audioRef.value) {
+      audioRef.value.play().then(() => {
+        if (!isPlaying.value) {
+          audioRef.value?.pause();
+        }
+      }).catch(() => {});
+    }
+    document.removeEventListener('touchstart', unlockAudio);
+    document.removeEventListener('click', unlockAudio);
+  };
+  document.addEventListener('touchstart', unlockAudio, { once: true });
+  document.addEventListener('click', unlockAudio, { once: true });
 });
 
 onUnmounted(() => {
