@@ -51,7 +51,7 @@ const startAudio = async () => {
 
 watch(isPlaying, () => {
   startAudio();
-});
+}, { flush: 'sync' });
 
 onMounted(() => {
   if (isPlaying.value) {
@@ -73,6 +73,8 @@ onUnmounted(() => {
     ref="audioRef"
     src="/sounds/silence.wav"
     loop
+    playsinline
+    webkit-playsinline
     class="hidden"
   />
 </template>
