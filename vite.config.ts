@@ -22,7 +22,7 @@ export default defineConfig({
     }),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.svg", "logo.svg"],
+      includeAssets: ["favicon.png"],
       manifest: {
         name: "Moodist",
         short_name: "Moodist",

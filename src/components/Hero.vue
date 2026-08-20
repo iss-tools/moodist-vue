@@ -18,12 +18,12 @@ const soundCount = computed(() => {
         <div class="pattern"></div>
         <div class="logo-wrapper">
           <img
-            alt="Faded Moodist Logo"
-            aria-hidden="true"
+            alt="Moodist Logo"
             class="logo"
-            height="48"
-            src="/logo.svg"
-            width="48"
+            height="64"
+            src="/logo-dark.png"
+            width="64"
+            style="border-radius: 16px;"
           />
         </div>
 
@@ -111,13 +111,9 @@ const soundCount = computed(() => {
     color: var(--color-fg-primary);
     .logo {
       display: block;
-      width: 48px;
+      width: 64px;
       margin: 0 auto 20px;
       opacity: 1;
-      animation-name: logo;
-      animation-duration: 60s;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
     }
   }
 
@@ -190,13 +186,4 @@ const soundCount = computed(() => {
   }
 }
 
-@keyframes logo {
-  0% {
-    transform: rotate(0);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
 </style>

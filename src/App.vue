@@ -6,9 +6,7 @@
       <header class="header">
         <Container class="header-content">
           <div class="logo-section">
-            <div class="logo">
-              <div class="logo-inner"></div>
-            </div>
+            <img src="/favicon.png" alt="Moodist Logo" class="logo-image" />
             <h1 class="app-title">Moodist</h1>
           </div>
           <div class="header-actions">
@@ -359,24 +357,10 @@ onMounted(() => {
   gap: 8px;
 }
 
-.logo {
+.logo-image {
   width: 32px;
   height: 32px;
-  background-color: var(--color-fg-primary);
   border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
-}
-
-.logo-inner {
-  width: 16px;
-  height: 16px;
-  background-color: var(--color-bg-primary);
-  border-radius: 2px;
-  transform: rotate(45deg);
-  transition: background-color 0.3s ease;
 }
 
 .app-title {
