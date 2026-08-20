@@ -26,6 +26,16 @@
               <MoonIcon v-else class="theme-icon" />
             </button>
 
+            <!-- Install PWA Button -->
+            <button
+              v-if="canInstall"
+              class="theme-toggle-button"
+              @click="installPWA"
+              title="Install App"
+            >
+              <DownloadIcon class="theme-icon" />
+            </button>
+
             <!-- Global Volume -->
             <div class="volume-control">
               <VolumeOffIcon
@@ -91,6 +101,7 @@
         <Countdown v-if="activeModal === 'countdown'" />
         <Shortcuts v-if="activeModal === 'shortcuts'" />
         <SharedMix v-if="activeModal === 'share'" />
+        <InstallPrompt v-if="activeModal === 'install'" />
       </Modal>
       <MediaSession />
       <Snackbar />
@@ -119,6 +130,7 @@ import {
   VolumeOff as VolumeOffIcon,
   Sun as SunIcon,
   Moon as MoonIcon,
+  Download as DownloadIcon,
 } from "lucide-vue-next";
 import { Howler } from "howler";
 import { onMounted, ref } from "vue";
@@ -130,6 +142,7 @@ import { useShortcuts } from "./composables/useShortcuts";
 import { computed, watchEffect } from "vue";
 import { useI18n } from "vue-i18n";
 import { useHead } from "@unhead/vue";
+import { useSnackbar } from "./composables/useSnackbar";
 
 // Components are auto-imported by unplugin-vue-components
 
@@ -137,6 +150,7 @@ const store = useSoundStore();
 const themeStore = useThemeStore();
 const { globalVolume, noSelected, getFavorites } = storeToRefs(store);
 const { t, locale } = useI18n();
+const { show: showSnackbar } = useSnackbar();
 
 // Dynamic SEO
 useHead({
@@ -166,6 +180,42 @@ const setGlobalVolume = (volume: number) => {
   oldGlobalVolume.value = globalVolume.value;
   globalVolume.value = volume;
 };
+
+const deferredPrompt = ref<any>(null);
+const isStandalone = ref(
+  typeof window !== 'undefined' && 
+  (window.matchMedia('(display-mode: standalone)').matches || (window.navigator as any).standalone)
+);
+const isIOS = ref(
+  typeof window !== 'undefined' && 
+  /iPad|iPhone|iPod/.test(window.navigator.userAgent) && !(window as any).MSStream
+);
+
+const canInstall = computed(() => {
+  return !isStandalone.value;
+});
+
+const installPWA = async () => {
+  if (deferredPrompt.value) {
+    deferredPrompt.value.prompt();
+    const { outcome } = await deferredPrompt.value.userChoice;
+    if (outcome === 'accepted') {
+      deferredPrompt.value = null;
+      isStandalone.value = true;
+    }
+  } else {
+    const supportsInstallPrompt = typeof window !== 'undefined' && 'onbeforeinstallprompt' in window;
+    
+    if (supportsInstallPrompt) {
+      // Chrome/Edge/Android: Wait for the actual event to be ready
+      showSnackbar(t('install.preparing'));
+    } else {
+      // Safari iOS/macOS: Doesn't support the event, so use the manual popup
+      openModal("install");
+    }
+  }
+};
+
 const allCategories = computed(() => {
   const categories = [];
 
@@ -229,6 +279,16 @@ useShortcuts({
 });
 
 onMounted(() => {
+  if ((window as any).__deferredPrompt) {
+    deferredPrompt.value = (window as any).__deferredPrompt;
+  }
+
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt.value = e;
+    (window as any).__deferredPrompt = e;
+  });
+
   // 初始化主题
   themeStore.applyTheme(themeStore.theme);
 
@@ -365,7 +425,10 @@ onMounted(() => {
 }
 
 .volume-control {
-  display: flex;
+  display: none;
+  @media (min-width: 640px) {
+    display: flex;
+  }
   align-items: center;
   gap: 12px;
   padding: 6px 12px;

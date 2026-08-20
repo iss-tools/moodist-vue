@@ -146,6 +146,13 @@ export default {
     shortcuts: 'Shortcuts',
     shareMix: 'Share Mix'
   },
+  install: {
+    title: 'Install Moodist',
+    iosInstruction: 'To install Moodist on iOS, tap the Share button at the bottom of Safari, then tap "Add to Home Screen".',
+    macInstruction: 'To install Moodist on macOS Safari, click the Share button, then select "Add to Dock".',
+    otherInstruction: 'To install Moodist, look for the "Install" or "Add to Home Screen" option in your browser\'s menu.',
+    preparing: 'Preparing installation, please try again in a moment...'
+  },
   about: {
     useMoodist: 'Use Moodist',
     p1Title: 'Free Ambient Sounds',

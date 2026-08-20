@@ -146,6 +146,13 @@ export default {
     shortcuts: '快捷键',
     shareMix: '分享混音'
   },
+  install: {
+    title: '安装 Moodist',
+    iosInstruction: '要在 iOS 上安装 Moodist，请点击 Safari 底部（或顶部）的“分享”按钮，然后选择“添加到主屏幕”。',
+    macInstruction: '要在 macOS Safari 上安装 Moodist，请点击“分享”按钮，然后选择“添加到程序坞”。',
+    otherInstruction: '要在您的设备上安装 Moodist，请在浏览器菜单中寻找“安装”或“添加到主屏幕”选项。',
+    preparing: '正在准备安装组件，请稍后再试...'
+  },
   about: {
     useMoodist: '开始使用 Moodist',
     p1Title: '免费的白噪音',

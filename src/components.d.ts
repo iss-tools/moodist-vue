@@ -20,6 +20,7 @@ declare module 'vue' {
     Countdown: typeof import('./components/Countdown.vue')['default']
     FloatingActions: typeof import('./components/FloatingActions.vue')['default']
     Hero: typeof import('./components/Hero.vue')['default']
+    InstallPrompt: typeof import('./components/InstallPrompt.vue')['default']
     Isochronic: typeof import('./components/Isochronic.vue')['default']
     Lofi: typeof import('./components/Lofi.vue')['default']
     MediaSession: typeof import('./components/MediaSession.vue')['default']

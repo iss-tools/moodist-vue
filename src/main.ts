@@ -6,6 +6,12 @@ import "uno.css";
 import App from "./App.vue";
 import i18n from "./locales";
 
+// Catch beforeinstallprompt early before Vue mounts
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  (window as any).__deferredPrompt = e;
+});
+
 const app = createApp(App);
 const pinia = createPinia();
 const head = createHead();
