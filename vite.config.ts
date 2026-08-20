@@ -3,6 +3,7 @@ import vue from "@vitejs/plugin-vue";
 import UnoCSS from "@unocss/vite";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
+import { VitePWA } from "vite-plugin-pwa";
 import { fileURLToPath, URL } from "node:url";
 
 export default defineConfig({
@@ -19,6 +20,28 @@ export default defineConfig({
     Components({
       dts: "src/components.d.ts",
     }),
+    VitePWA({
+      registerType: "autoUpdate",
+      includeAssets: ["favicon.svg", "logo.svg"],
+      manifest: {
+        name: "Moodist",
+        short_name: "Moodist",
+        description: "Ambient Sounds for Focus and Calm",
+        theme_color: "#ffffff",
+        icons: [
+          {
+            src: "logo-dark.png",
+            sizes: "192x192",
+            type: "image/png"
+          },
+          {
+            src: "logo-dark.png",
+            sizes: "512x512",
+            type: "image/png"
+          }
+        ]
+      }
+    })
   ],
   resolve: {
     alias: {
