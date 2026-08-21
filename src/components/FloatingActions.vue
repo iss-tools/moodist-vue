@@ -1,5 +1,27 @@
 <template>
   <div class="floating-actions">
+    <div class="category-dropdown-container" ref="categoryMenuRef">
+      <button
+        :class="['action-button']"
+        @click="toggleCategoryMenu"
+        :title="$t('components.categories')"
+      >
+        <LayoutGridIcon class="icon-svg" />
+      </button>
+
+      <div v-if="showCategoryMenu" class="category-menu">
+        <button
+          v-for="category in categories"
+          :key="category.id"
+          class="category-icon-btn"
+          :title="category.title"
+          @click="goto(category.id)"
+        >
+          <component :is="getIcon(category.icon)" />
+        </button>
+      </div>
+    </div>
+
     <button
       :class="['play-button', { disabled: noSelected || locked }]"
       @click="handleToggle"
@@ -41,12 +63,20 @@ import {
   Shuffle as ShuffleIcon,
   Play,
   Pause,
+  LayoutGrid as LayoutGridIcon,
+  HelpCircle
 } from "lucide-vue-next";
+import * as LucideIcons from "lucide-vue-next";
 import { storeToRefs } from "pinia";
-import { computed } from "vue";
+import { computed, ref, type Component } from "vue";
+import { onClickOutside } from "@vueuse/core";
 import { useSoundStore } from "../stores/sound";
 import { useSnackbar } from "../composables/useSnackbar";
 import { useI18n } from "vue-i18n";
+
+const props = defineProps<{
+  categories?: any[];
+}>();
 
 const PlayIcon = Play;
 const PauseIcon = Pause;
@@ -83,6 +113,29 @@ const handleShuffle = () => {
   store.shuffle();
   showSnackbar(t('floating.soundsShuffled'));
 };
+
+const showCategoryMenu = ref(false);
+const categoryMenuRef = ref(null);
+
+onClickOutside(categoryMenuRef, () => {
+  showCategoryMenu.value = false;
+});
+
+const toggleCategoryMenu = () => {
+  showCategoryMenu.value = !showCategoryMenu.value;
+};
+
+const getIcon = (iconName: any): Component => {
+  const icon = (LucideIcons as any)[iconName];
+  if (!icon) return HelpCircle;
+  return icon as Component;
+};
+
+const goto = (id: string) => {
+  const category = document.getElementById(`category-${id}`);
+  category?.scrollIntoView({ behavior: "smooth" });
+  showCategoryMenu.value = false;
+};
 </script>
 
 <style scoped lang="scss">
@@ -95,7 +148,60 @@ const handleShuffle = () => {
   display: flex;
   align-items: center;
   gap: 10px;
+  pointer-events: none;
+}
+
+.floating-actions > * {
   pointer-events: auto;
+}
+
+.category-dropdown-container {
+  position: relative;
+  display: flex;
+}
+
+.category-menu {
+  position: absolute;
+  bottom: calc(100% + 15px);
+  left: 0;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: 16px;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  width: max-content;
+  box-shadow: var(--shadow-floating);
+  z-index: 100;
+  transform-origin: bottom left;
+  animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.9) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.category-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+  color: var(--color-fg-secondary);
+  cursor: pointer;
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: var(--color-fg-primary);
+    background: var(--color-bg-secondary);
+    transform: translateY(-2px);
+  }
 }
 
 .play-button {

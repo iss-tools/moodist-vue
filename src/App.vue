@@ -70,7 +70,6 @@
       </header>
       <!-- Hero Section -->
       <Hero />
-      <CategoryIcons />
       <!-- Main Content -->
       <main class="main-content">
         <Container>
@@ -82,7 +81,7 @@
         </Container>
       </main>
 
-      <FloatingActions />
+      <FloatingActions :categories="allCategories" />
 
       <!-- Modals -->
       <Modal :show="!!activeModal" @close="closeModal">
