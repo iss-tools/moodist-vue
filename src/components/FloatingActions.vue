@@ -53,6 +53,28 @@
     >
       <ShuffleIcon class="icon-svg" />
     </button>
+
+    <div class="preset-dropdown-container" ref="presetMenuRef">
+      <button
+        :class="['action-button']"
+        @click="togglePresetMenu"
+        :title="$t('menu.presets')"
+      >
+        <ListMusicIcon class="icon-svg" />
+      </button>
+
+      <div v-if="showPresetMenu" class="preset-menu">
+        <button
+          v-for="preset in presetStore.presets"
+          :key="preset.id"
+          class="preset-list-btn"
+          @click="applyPreset(preset)"
+        >
+          <component :is="getIcon(preset.icon || 'ListMusic')" class="preset-list-icon" />
+          <span class="preset-list-label">{{ preset.label }}</span>
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -64,12 +86,14 @@ import {
   Play,
   Pause,
   LayoutGrid as LayoutGridIcon,
-  HelpCircle
+  HelpCircle,
+  ListMusic as ListMusicIcon
 } from "lucide-vue-next";
 import * as LucideIcons from "lucide-vue-next";
 import { storeToRefs } from "pinia";
 import { computed, ref, type Component } from "vue";
 import { onClickOutside } from "@vueuse/core";
+import { usePresetStore } from "../stores/preset";
 import { useSoundStore } from "../stores/sound";
 import { useSnackbar } from "../composables/useSnackbar";
 import { useI18n } from "vue-i18n";
@@ -82,6 +106,7 @@ const PlayIcon = Play;
 const PauseIcon = Pause;
 
 const store = useSoundStore();
+const presetStore = usePresetStore();
 const { show: showSnackbar } = useSnackbar();
 const { noSelected, history, locked, isPlaying } = storeToRefs(store);
 const { t } = useI18n();
@@ -135,6 +160,24 @@ const goto = (id: string) => {
   const category = document.getElementById(`category-${id}`);
   category?.scrollIntoView({ behavior: "smooth" });
   showCategoryMenu.value = false;
+};
+
+const showPresetMenu = ref(false);
+const presetMenuRef = ref(null);
+
+onClickOutside(presetMenuRef, () => {
+  showPresetMenu.value = false;
+});
+
+const togglePresetMenu = () => {
+  showPresetMenu.value = !showPresetMenu.value;
+};
+
+const applyPreset = (preset: any) => {
+  store.override(preset.sounds);
+  store.play();
+  showPresetMenu.value = false;
+  showSnackbar(`${t('common.applyMix')}: ${preset.label}`);
 };
 </script>
 
@@ -295,5 +338,60 @@ const goto = (id: string) => {
     width: 18px;
     height: 18px;
   }
+}
+
+.preset-dropdown-container {
+  position: relative;
+  display: flex;
+}
+
+.preset-menu {
+  position: absolute;
+  bottom: calc(100% + 15px);
+  right: 0;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: 16px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: max-content;
+  max-height: 400px;
+  overflow-y: auto;
+  box-shadow: var(--shadow-floating);
+  z-index: 100;
+  transform-origin: bottom right;
+  animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.preset-list-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  color: var(--color-fg-primary);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+
+  &:hover {
+    background: var(--color-bg-secondary);
+    transform: translateY(-2px);
+  }
+}
+
+.preset-list-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--color-fg-muted);
+}
+
+.preset-list-label {
+  font-size: 14px;
+  font-weight: 500;
 }
 </style>
