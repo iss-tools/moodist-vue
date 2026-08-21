@@ -16,6 +16,7 @@ export default {
     copy: 'Copy',
     copied: 'Copied',
     applyMix: 'Apply Mix',
+    reset: 'Reset',
   },
   presets: {
     delta: 'Delta',

@@ -16,6 +16,7 @@ export default {
     copy: '复制',
     copied: '已复制',
     applyMix: '应用组合',
+    reset: '重置',
   },
   presets: {
     delta: 'Delta',

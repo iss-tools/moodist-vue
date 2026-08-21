@@ -13,20 +13,29 @@ const defaultPresets: Preset[] = [
   { id: 'meditation', label: '冥想', icon: 'Brain', sounds: { 'meditation-zither': 0.8, 'singing-bowl': 0.6, 'river': 0.4 } },
   { id: 'study', label: '学习', icon: 'BookOpen', sounds: { 'study': 0.7, 'piano': 0.6, 'rain-on-window': 0.5 } },
   { id: 'sleep', label: '睡眠', icon: 'Moon', sounds: { 'heavy-rain-2': 0.6, 'campfire': 0.4, 'brown-noise': 0.5 } },
-  { id: 'workout', label: '锻炼', icon: 'Dumbbell', sounds: { 'busy-street': 0.7, 'crowd': 0.5 } },
+  { id: 'workout', label: '锻炼', icon: 'Dumbbell', sounds: { 'horse-gallop': 0.6, 'howling-wind': 0.4, 'heavy-rain': 0.3 } },
   { id: 'break', label: '休息', icon: 'Coffee', sounds: { 'cafe': 0.6, 'birds': 0.4, 'field': 0.3 } },
-  { id: 'airplane', label: '飞机', icon: 'Plane', sounds: { 'airplane': 0.8, 'brown-noise': 0.3 } },
+  { id: 'airplane', label: '飞机', icon: 'Plane', sounds: { 'airplane': 0.6, 'brown-noise': 0.5, 'crowd': 0.1 } },
   { id: 'rain', label: '雨天', icon: 'CloudRain', sounds: { 'heavy-rain-2': 0.7, 'rain-on-window': 0.6, 'thunder': 0.4 } },
   { id: 'outdoor', label: '户外', icon: 'TreePine', sounds: { 'forest': 0.7, 'birds': 0.5, 'wind': 0.4 } }
 ];
 
 export const usePresetStore = defineStore('preset', () => {
   const presets = useLocalStorage<Preset[]>('moodist-presets', []);
-  const hasInitializedDefaults = useLocalStorage('moodist-presets-init-v4', false);
+  const initVersion = useLocalStorage('moodist-presets-version', 0);
 
-  if (!hasInitializedDefaults.value) {
-    presets.value = [...defaultPresets, ...presets.value];
-    hasInitializedDefaults.value = true;
+  if (initVersion.value < 5) {
+    const updatedPresets = [...presets.value];
+    defaultPresets.forEach(dp => {
+      const idx = updatedPresets.findIndex(p => p.id === dp.id);
+      if (idx >= 0) {
+        updatedPresets[idx] = { ...updatedPresets[idx], sounds: dp.sounds, icon: dp.icon };
+      } else {
+        updatedPresets.unshift(dp);
+      }
+    });
+    presets.value = updatedPresets;
+    initVersion.value = 5;
   }
 
   function addPreset(label: string, sounds: Record<string, number>) {
