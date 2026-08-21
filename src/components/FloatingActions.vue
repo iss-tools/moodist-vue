@@ -64,17 +64,66 @@
       </button>
 
       <div v-if="showPresetMenu" class="preset-menu">
+        <div class="preset-items-list">
+          <div
+            v-for="preset in presetStore.presets"
+            :key="preset.id"
+            class="preset-list-item-wrapper"
+          >
+            <button
+              class="preset-list-btn flex-1"
+              @click="applyPreset(preset)"
+            >
+              <component :is="getIcon(preset.icon || 'ListMusic')" class="preset-list-icon" />
+              <span class="preset-list-label">{{ $te(`defaultPresets.${preset.id}`) ? $t(`defaultPresets.${preset.id}`) : preset.label }}</span>
+            </button>
+            <button
+              class="preset-list-delete-btn"
+              @click.stop="deletePreset(preset.id)"
+              :title="$t('common.delete')"
+            >
+              <TrashIcon class="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        <div class="preset-divider"></div>
         <button
-          v-for="preset in presetStore.presets"
-          :key="preset.id"
-          class="preset-list-btn"
-          @click="applyPreset(preset)"
+          class="preset-list-save-btn"
+          @click="openSaveModal"
+          :disabled="noSelected"
         >
-          <component :is="getIcon(preset.icon || 'ListMusic')" class="preset-list-icon" />
-          <span class="preset-list-label">{{ $te(`defaultPresets.${preset.id}`) ? $t(`defaultPresets.${preset.id}`) : preset.label }}</span>
+          <SaveIcon class="preset-list-icon" />
+          <span class="preset-list-label">{{ $t('components.newPreset') }}</span>
         </button>
       </div>
     </div>
+
+    <Modal :show="showSaveModal" @close="showSaveModal = false">
+      <div class="save-modal-content">
+        <h3 class="save-modal-title">{{ $t('components.newPreset') }}</h3>
+        <input
+          v-model="newPresetName"
+          type="text"
+          :placeholder="$t('components.presetNamePlaceholder')"
+          class="save-modal-input"
+          @keyup.enter="confirmSaveMix"
+          ref="saveInputRef"
+        />
+        <div class="save-modal-actions">
+          <button class="save-modal-btn cancel" @click="showSaveModal = false">
+            {{ $t('common.cancel') }}
+          </button>
+          <button
+            class="save-modal-btn confirm"
+            @click="confirmSaveMix"
+            :disabled="!newPresetName.trim()"
+          >
+            {{ $t('common.save') }}
+          </button>
+        </div>
+      </div>
+    </Modal>
   </div>
 </template>
 
@@ -87,16 +136,18 @@ import {
   Pause,
   LayoutGrid as LayoutGridIcon,
   HelpCircle,
-  ListMusic as ListMusicIcon
+  ListMusic as ListMusicIcon,
+  Save as SaveIcon
 } from "lucide-vue-next";
 import * as LucideIcons from "lucide-vue-next";
 import { storeToRefs } from "pinia";
-import { computed, ref, type Component } from "vue";
+import { computed, ref, nextTick, type Component } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { usePresetStore } from "../stores/preset";
 import { useSoundStore } from "../stores/sound";
 import { useSnackbar } from "../composables/useSnackbar";
 import { useI18n } from "vue-i18n";
+import Modal from "./Modal.vue";
 
 const props = defineProps<{
   categories?: any[];
@@ -177,7 +228,40 @@ const applyPreset = (preset: any) => {
   store.override(preset.sounds);
   store.play();
   showPresetMenu.value = false;
-  showSnackbar(`${t('common.applyMix')}: ${preset.label}`);
+  showSnackbar(`${t('common.applyMix')}: ${t(`defaultPresets.${preset.id}`) || preset.label}`);
+};
+
+const deletePreset = (id: string) => {
+  presetStore.deletePreset(id);
+};
+
+const showSaveModal = ref(false);
+const newPresetName = ref("");
+const saveInputRef = ref<HTMLInputElement | null>(null);
+
+const openSaveModal = () => {
+  if (noSelected.value) return;
+  newPresetName.value = "";
+  showPresetMenu.value = false;
+  showSaveModal.value = true;
+  nextTick(() => {
+    saveInputRef.value?.focus();
+  });
+};
+
+const confirmSaveMix = () => {
+  if (noSelected.value || !newPresetName.value.trim()) return;
+
+  const activeSounds: Record<string, number> = {};
+  Object.keys(store.sounds).forEach((id) => {
+    if (store.sounds[id].isSelected) {
+      activeSounds[id] = store.sounds[id].volume;
+    }
+  });
+
+  presetStore.addPreset(newPresetName.value.trim(), activeSounds);
+  showSnackbar(t('common.save') + ': ' + newPresetName.value.trim());
+  showSaveModal.value = false;
 };
 </script>
 
@@ -357,12 +441,25 @@ const applyPreset = (preset: any) => {
   flex-direction: column;
   gap: 8px;
   width: max-content;
-  max-height: 400px;
-  overflow-y: auto;
   box-shadow: var(--shadow-floating);
   z-index: 100;
   transform-origin: bottom right;
   animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.preset-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 350px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.preset-list-item-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .preset-list-btn {
@@ -376,7 +473,8 @@ const applyPreset = (preset: any) => {
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s ease;
-  min-width: 120px;
+  min-width: 140px;
+  text-align: left;
 
   &:hover {
     background: var(--color-bg-secondary);
@@ -384,14 +482,132 @@ const applyPreset = (preset: any) => {
   }
 }
 
-.preset-list-icon {
-  width: 20px;
-  height: 20px;
+.preset-list-delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
   color: var(--color-fg-muted);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: var(--color-error);
+    background: rgba(239, 68, 68, 0.1);
+    transform: translateY(-2px);
+  }
+}
+
+.preset-divider {
+  height: 1px;
+  background-color: var(--color-border-secondary);
+  margin: 4px 0;
+}
+
+.preset-list-save-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  color: var(--color-bg-primary);
+  background: var(--color-fg-primary);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+
+  &:hover:not(:disabled) {
+    background: var(--color-fg-secondary);
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.preset-list-icon {
+  width: 18px;
+  height: 18px;
 }
 
 .preset-list-label {
   font-size: 14px;
   font-weight: 500;
+}
+
+.save-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.save-modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-fg-primary);
+}
+
+.save-modal-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border-primary);
+  background: var(--color-bg-secondary);
+  color: var(--color-fg-primary);
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s ease;
+
+  &:focus {
+    border-color: var(--color-border-accent);
+  }
+}
+
+.save-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.save-modal-btn {
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+
+  &.cancel {
+    background: var(--color-bg-tertiary);
+    color: var(--color-fg-primary);
+    border: 1px solid var(--color-border-primary);
+
+    &:hover {
+      background: var(--color-bg-secondary);
+    }
+  }
+
+  &.confirm {
+    background: var(--color-fg-primary);
+    color: var(--color-bg-primary);
+
+    &:hover:not(:disabled) {
+      background: var(--color-fg-secondary);
+      transform: translateY(-2px);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
 }
 </style>
