@@ -42,7 +42,7 @@
         <div v-for="preset in presets" :key="preset.id" class="preset-item">
           <input
             type="text"
-            :value="preset.label"
+            :value="$te(`defaultPresets.${preset.id}`) ? $t(`defaultPresets.${preset.id}`) : preset.label"
             @input="(e) => handleNameChange(preset.id, e)"
             class="preset-name-input"
             :placeholder="$t('components.untitled')"

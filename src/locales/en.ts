@@ -164,5 +164,15 @@ export default {
     p3Body: 'The beauty of Moodist lies in its simplicity and customization. No complex menus or confusing options – just choose your desired sounds, adjust the volume balance, and hit play. Want to blend the gentle chirping of birds with the soothing sound of rain? No problem! Layer as many sounds as you like to create your personalized soundscape oasis.',
     p4Title: 'Sounds for Every Moment',
     p4Body: "Whether you're looking to unwind after a long day, enhance your focus during work, or lull yourself into a peaceful sleep, Moodist has the perfect soundscape waiting for you. The best part? It's completely free and open-source, so you can enjoy its benefits without any strings attached. Start using Moodist today and discover your new haven of tranquility and focus!"
+  },
+  defaultPresets: {
+    meditation: 'Meditation',
+    study: 'Study',
+    sleep: 'Sleep',
+    workout: 'Workout',
+    break: 'Break',
+    airplane: 'Airplane',
+    rain: 'Rain',
+    outdoor: 'Outdoor'
   }
 };

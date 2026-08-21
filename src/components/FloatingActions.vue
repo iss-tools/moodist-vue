@@ -71,7 +71,7 @@
           @click="applyPreset(preset)"
         >
           <component :is="getIcon(preset.icon || 'ListMusic')" class="preset-list-icon" />
-          <span class="preset-list-label">{{ preset.label }}</span>
+          <span class="preset-list-label">{{ $te(`defaultPresets.${preset.id}`) ? $t(`defaultPresets.${preset.id}`) : preset.label }}</span>
         </button>
       </div>
     </div>
