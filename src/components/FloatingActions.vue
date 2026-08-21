@@ -160,7 +160,7 @@ const store = useSoundStore();
 const presetStore = usePresetStore();
 const { show: showSnackbar } = useSnackbar();
 const { noSelected, history, locked, isPlaying } = storeToRefs(store);
-const { t } = useI18n();
+const { t, te } = useI18n();
 
 const hasHistory = computed(() => !!history.value);
 
@@ -228,7 +228,10 @@ const applyPreset = (preset: any) => {
   store.override(preset.sounds);
   store.play();
   showPresetMenu.value = false;
-  showSnackbar(`${t('common.applyMix')}: ${t(`defaultPresets.${preset.id}`) || preset.label}`);
+  const presetName = te(`defaultPresets.${preset.id}`)
+    ? t(`defaultPresets.${preset.id}`)
+    : preset.label;
+  showSnackbar(`${t('common.applyMix')}: ${presetName}`);
 };
 
 const deletePreset = (id: string) => {
