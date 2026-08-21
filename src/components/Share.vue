@@ -6,15 +6,21 @@
       {{ $t('components.shareUrlDesc') }}
     </p>
 
-    <div class="share-url-section">
-      <div class="share-url-display">
-        {{ shareUrl }}
+    <div class="share-url-section mt-4">
+      <div class="qr-code-wrapper">
+        <QrcodeVue :value="shareUrl" :size="200" level="M" />
       </div>
-      <button @click="handleCopy" class="share-copy-button">
-        <Check v-if="copying" class="w-4 h-4" />
-        <Copy v-else class="w-4 h-4" />
-        {{ copying ? $t('common.copied') : $t('common.copy') }}
-      </button>
+
+      <div class="share-url-row">
+        <div class="share-url-display">
+          {{ shareUrl }}
+        </div>
+        <button @click="handleCopy" class="share-copy-button">
+          <Check v-if="copying" class="w-4 h-4" />
+          <Copy v-else class="w-4 h-4" />
+          {{ copying ? $t('common.copied') : $t('common.copy') }}
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -23,6 +29,7 @@
 import { computed } from "vue";
 import { storeToRefs } from "pinia";
 import { Copy, Check } from "lucide-vue-next";
+import QrcodeVue from "qrcode.vue";
 import { useSoundStore } from "../stores/sound";
 import { useCopy } from "../composables/useCopy";
 
@@ -78,6 +85,21 @@ const handleCopy = () => {
 
 .share-url-section {
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.qr-code-wrapper {
+  background-color: white;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border-primary);
+}
+
+.share-url-row {
+  display: flex;
+  width: 100%;
   gap: 8px;
 }
 

@@ -64,6 +64,10 @@ export default {
     sharedMixTitle: '检测到新的混音组合！',
     sharedMixDesc: '有人与您分享了以下混音组合。您要覆盖当前的选择吗？',
     shareUrlDesc: '复制并发送以下链接，与他人分享您当前的声音选择和音量设置。',
+    scanTitle: '扫描分享码',
+    scanDesc: '将摄像头对准 Moodist 分享二维码以加载组合。',
+    scanErrorCamera: '未获得相机权限或未找到相机。',
+    scanErrorInvalid: '无效的 Moodist 二维码。',
   },
   shortcuts: {
     general: '通用',
@@ -146,7 +150,8 @@ export default {
     presets: '预设',
     shuffle: '随机播放',
     shortcuts: '快捷键',
-    shareMix: '分享混音'
+    shareMix: '分享混音',
+    scanQR: '扫一扫'
   },
   install: {
     title: '安装 Moodist',

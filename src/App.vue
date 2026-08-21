@@ -97,7 +97,8 @@
         <Todo v-if="activeModal === 'todo'" />
         <Countdown v-if="activeModal === 'countdown'" />
         <Shortcuts v-if="activeModal === 'shortcuts'" />
-        <SharedMix v-if="activeModal === 'share'" />
+        <SharedMix v-if="activeModal === 'shared-mix'" @close="closeModal" />
+        <ScanQR v-if="activeModal === 'scan-qr'" @close="closeModal" />
         <InstallPrompt v-if="activeModal === 'install'" />
       </Modal>
       <MediaSession />
@@ -246,7 +247,6 @@ const allCategories = computed(() => {
 });
 
 const activeModal = ref<string | null>(null);
-const showSharedMix = ref(false);
 
 const openModal = (name: string) => {
   activeModal.value = name;
@@ -271,6 +271,7 @@ useShortcuts({
   todo: () => openModal("todo"),
   countdown: () => openModal("countdown"),
   shortcuts: () => openModal("shortcuts"),
+  scanQR: () => openModal("scan-qr"),
   togglePlay: () => store.togglePlay(),
   menu: () => menuRef.value?.toggleMenu(),
 });
@@ -291,7 +292,7 @@ onMounted(() => {
 
   const searchParams = new URLSearchParams(window.location.search);
   if (searchParams.get("share")) {
-    showSharedMix.value = true;
+    activeModal.value = "shared-mix";
   }
 
   // Analytics integration

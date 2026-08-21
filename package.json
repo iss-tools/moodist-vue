@@ -25,9 +25,11 @@
     "lucide-vue-next": "^1.0.0",
     "motion": "^12.38.0",
     "pinia": "^3.0.4",
+    "qrcode.vue": "^3.10.0",
     "uuid": "^14.0.0",
     "vue": "^3.4.21",
-    "vue-i18n": "^11.4.8"
+    "vue-i18n": "^11.4.8",
+    "vue-qrcode-reader": "^5.7.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.2",

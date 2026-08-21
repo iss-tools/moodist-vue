@@ -18,6 +18,7 @@ import {
   ListMusic,
   CheckSquare,
   Globe,
+  Scan,
 } from "lucide-vue-next";
 import { useI18n } from 'vue-i18n';
 
@@ -154,6 +155,10 @@ defineExpose({
         >
           <Share2 class="w-4 h-4" />
           {{ $t('menu.shareMix') }}
+        </button>
+        <button @click="handleAction('scan-qr')" class="menu-item">
+          <Scan class="w-4 h-4" />
+          {{ $t('menu.scanQR') }}
         </button>
       </div>
     </Transition>

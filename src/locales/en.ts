@@ -64,6 +64,10 @@ export default {
     sharedMixTitle: 'New sound mix detected!',
     sharedMixDesc: 'Someone has shared the following mix with you. Would you like to override your current selection?',
     shareUrlDesc: 'Copy and send the following link to share your current sound selection and volume settings with others.',
+    scanTitle: 'Scan Shared Mix',
+    scanDesc: 'Point your camera at a Moodist QR code to load the mix.',
+    scanErrorCamera: 'Camera permission denied or camera not found.',
+    scanErrorInvalid: 'Invalid Moodist QR code.',
   },
   shortcuts: {
     general: 'General',
@@ -146,7 +150,8 @@ export default {
     presets: 'Your Presets',
     shuffle: 'Shuffle Sounds',
     shortcuts: 'Shortcuts',
-    shareMix: 'Share Mix'
+    shareMix: 'Share Mix',
+    scanQR: 'Scan QR Code'
   },
   install: {
     title: 'Install Moodist',

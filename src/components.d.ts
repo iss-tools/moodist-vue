@@ -31,6 +31,7 @@ declare module 'vue' {
     Pomodoro: typeof import('./components/Pomodoro.vue')['default']
     PomodoroSettings: typeof import('./components/PomodoroSettings.vue')['default']
     Presets: typeof import('./components/Presets.vue')['default']
+    ScanQR: typeof import('./components/ScanQR.vue')['default']
     Share: typeof import('./components/Share.vue')['default']
     SharedMix: typeof import('./components/SharedMix.vue')['default']
     Shortcuts: typeof import('./components/Shortcuts.vue')['default']
