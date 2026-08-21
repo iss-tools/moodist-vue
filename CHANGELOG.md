@@ -1,5 +1,22 @@
 # Changelog
 
+# [0.2.0](https://github.com/iss-tools/moodist-vue/compare/v0.1.0...v0.2.0) (2026-08-21)
+
+### Bug Fixes
+
+* 预设修复 ([55c840c](https://github.com/iss-tools/moodist-vue/commit/55c840ce48678f269c08356f9cff5fd7f3422d6b))
+* 预设音频i18n ([6f7b45f](https://github.com/iss-tools/moodist-vue/commit/6f7b45f41856fa758e8646bd662ecb6a2d0219a7))
+* i18n ([3cd3bbe](https://github.com/iss-tools/moodist-vue/commit/3cd3bbe458fe6eb190e1e54c7c20dcb7ff8fe924))
+* ios真机后台播放 ([e4c15f7](https://github.com/iss-tools/moodist-vue/commit/e4c15f7fdf606c48fe2e6d374d7c83c2dc4c1d91))
+
+### Features
+
+* 将分类改放到播放左侧 ([e0950c4](https://github.com/iss-tools/moodist-vue/commit/e0950c4055d0ffa2ac2186336c4c91999d046311))
+* 扩充部分音频文件 ([2b332d1](https://github.com/iss-tools/moodist-vue/commit/2b332d165011029f14c3ddae0f1378c77bf941a7))
+* 添加分享生成二维码 ([0a9ac56](https://github.com/iss-tools/moodist-vue/commit/0a9ac56c0c85026dad7346bf012e43ae396e9a2e))
+* 添加默认预设与右下角按钮 ([76d1bd2](https://github.com/iss-tools/moodist-vue/commit/76d1bd218ceb34db38c0132f0d769b19ea142848))
+* 右下角添加预设另存为 ([aea390a](https://github.com/iss-tools/moodist-vue/commit/aea390a2210c0d49004e10f02719812e388a6519))
+
 # 0.1.0 (2026-08-20)
 
 ### Bug Fixes
