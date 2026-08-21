@@ -25,6 +25,19 @@ export const useSoundStore = defineStore("sound", () => {
     return initial;
   });
 
+  // Ensure all current sounds exist in the state (in case new sounds were added after the user's first visit)
+  sounds.categories.forEach((category) => {
+    category.sounds.forEach((sound) => {
+      if (!soundsState.value[sound.id]) {
+        soundsState.value[sound.id] = {
+          isFavorite: false,
+          isSelected: false,
+          volume: 0.5,
+        };
+      }
+    });
+  });
+
   const history = ref<Record<string, any> | null>(null);
 
   const getFavorites = computed(() => {

@@ -127,7 +127,8 @@ export default {
     cafe: '咖啡馆', library: '图书馆', office: '办公室', restaurant: '餐厅', supermarket: '超市', airport: '机场', 'subway-station': '地铁站', 'laundry-room': '洗衣房', underwater: '水下', 'construction-site': '建筑工地', church: '教堂', temple: '寺庙', 'crowded-bar': '拥挤酒吧', 'night-village': '夜晚村庄', carousel: '旋转木马', laboratory: '实验室',
     train: '火车', 'inside-a-train': '火车内', airplane: '飞机', sailboat: '帆船', 'rowing-boat': '划艇', submarine: '潜水艇',
     clock: '时钟', keyboard: '键盘', typewriter: '打字机', 'ceiling-fan': '吊扇', 'vinyl-effect': '黑胶唱片', 'tuning-radio': '调频收音机', 'boiling-water': '烧水', bubbles: '泡泡', 'wind-chimes': '风铃', paper: '纸张', 'singing-bowl': '颂钵', dryer: '吹风机', 'slide-projector': '幻灯机', 'morse-code': '摩斯密码', 'washing-machine': '洗衣机', 'windshield-wipers': '雨刷器',
-    'white-noise': '白噪音', 'pink-noise': '粉红噪音', 'brown-noise': '褐噪音'
+    'white-noise': '白噪音', 'pink-noise': '粉红噪音', 'brown-noise': '褐噪音',
+    field: '田野', lake: '湖泊', 'summer-night-bugs': '夏夜虫鸣', 'eating-chips': '吃薯片', piano: '钢琴', study: '学习', kitchen: '厨房', drizzle: '细雨', 'heavy-rain-on-glass': '雨打玻璃', 'heavy-rain-2': '暴雨', 'rain-on-eaves-2': '屋檐落雨', 'rain-on-eaves': '雨打屋檐', 'rain-on-empty-street': '空巷落雨', 'rain-on-raincoat': '雨打雨衣', 'rain-on-windowsill': '雨打窗台', 'rain-on-wooden-house': '雨打木屋', 'rain-while-driving': '驾车听雨', thunderstorm: '雷暴', 'windy-drizzle': '小雨加风', 'trickling-rain': '尖尖流雨', 'bright-rain': '敞亮雨', 'rain-on-canopy': '雨棚', 'rain-on-roof': '顶棚雨', 'ear-cleaning-1': '掏耳朵1', 'ear-cleaning-2': '掏耳朵2', guitar: '吉他', guzheng: '古筝', 'light-piano': '轻钢琴', 'elegant-piano': '优雅钢琴', 'meditation-zither': '冥想琴音', 'daze-sound': '发呆音', 'fan-2': '风扇'
   },
   menu: {
     productivity: '效率提升',
