@@ -14,7 +14,6 @@ declare module 'vue' {
     About: typeof import('./components/About.vue')['default']
     Binaural: typeof import('./components/Binaural.vue')['default']
     Breathing: typeof import('./components/Breathing.vue')['default']
-    CategoryIcons: typeof import('./components/CategoryIcons.vue')['default']
     CategorySection: typeof import('./components/CategorySection.vue')['default']
     Container: typeof import('./components/Container.vue')['default']
     Countdown: typeof import('./components/Countdown.vue')['default']
