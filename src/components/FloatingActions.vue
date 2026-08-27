@@ -139,7 +139,7 @@ import {
   ListMusic as ListMusicIcon,
   Save as SaveIcon
 } from "lucide-vue-next";
-import * as LucideIcons from "lucide-vue-next";
+import { iconMap } from "../data/iconMap";
 import { storeToRefs } from "pinia";
 import { computed, ref, nextTick, type Component } from "vue";
 import { onClickOutside } from "@vueuse/core";
@@ -202,7 +202,7 @@ const toggleCategoryMenu = () => {
 };
 
 const getIcon = (iconName: any): Component => {
-  const icon = (LucideIcons as any)[iconName];
+  const icon = iconMap[iconName];
   if (!icon) return HelpCircle;
   return icon as Component;
 };

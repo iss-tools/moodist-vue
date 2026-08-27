@@ -90,7 +90,7 @@ export const urban: Category = {
     { icon: 'Car', id: 'highway', label: 'Highway', src: getAssetPath('/sounds/urban/highway.mp3') },
     { icon: 'Zap', id: 'fireworks', label: 'Fireworks', src: getAssetPath('/sounds/urban/fireworks.mp3') },
     { icon: 'Bell', id: 'ambulance-siren', label: 'Ambulance Siren', src: getAssetPath('/sounds/urban/ambulance-siren.mp3') },
-    { icon: 'Road', id: 'road', label: 'Road', src: getAssetPath('/sounds/urban/road.mp3') },
+    { icon: 'Route', id: 'road', label: 'Road', src: getAssetPath('/sounds/urban/road.mp3') },
   ],
   title: 'Urban',
 };

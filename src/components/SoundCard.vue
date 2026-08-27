@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
 import { Heart as HeartIcon, Loader2 as LoadingIcon } from "lucide-vue-next";
-import * as LucideIcons from "lucide-vue-next";
+import { iconMap } from "../data/iconMap";
 import { storeToRefs } from "pinia";
 import { computed, watch } from "vue";
 import type { Sound } from "../data/types";
@@ -107,8 +107,8 @@ const handleVolumeChange = (e: Event) => {
 };
 
 const getIcon = (icon: any) => {
-  if (typeof icon === "string" && (LucideIcons as any)[icon]) {
-    return (LucideIcons as any)[icon];
+  if (typeof icon === "string" && iconMap[icon]) {
+    return iconMap[icon];
   }
   return icon;
 };

@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import * as LucideIcons from "lucide-vue-next";
+import { iconMap } from "@/data/iconMap";
 import type { Category } from "@/data/types";
 import SoundCard from "@/components/SoundCard.vue";
 
@@ -28,8 +28,8 @@ defineProps<{
 }>();
 
 const getIcon = (icon: any) => {
-  if (typeof icon === "string" && (LucideIcons as any)[icon]) {
-    return (LucideIcons as any)[icon];
+  if (typeof icon === "string" && iconMap[icon]) {
+    return iconMap[icon];
   }
   return icon;
 };
