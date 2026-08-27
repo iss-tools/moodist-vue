@@ -25,7 +25,13 @@ export default defineConfig({
     }),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.png", "favicon.svg", "logo-dark.png", "logo-light.png", "logo.svg"],
+      includeAssets: [
+        "favicon.png",
+        "favicon.svg",
+        "media-artwork.png",
+        "logo-light.png",
+        "logo.svg",
+      ],
       manifest: {
         name: "Moodist",
         short_name: "Moodist",
@@ -34,12 +40,12 @@ export default defineConfig({
         background_color: "#121212", // 设置启动画面的背景色，改成深色适配白色的logo
         icons: [
           {
-            src: "logo-dark.png",
+            src: "media-artwork.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "logo-dark.png",
+            src: "media-artwork.png",
             sizes: "512x512",
             type: "image/png",
           },
@@ -50,47 +56,47 @@ export default defineConfig({
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-            handler: 'CacheFirst',
+            handler: "CacheFirst",
             options: {
-              cacheName: 'google-fonts-cache',
+              cacheName: "google-fonts-cache",
               expiration: {
                 maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
+                maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
               },
               cacheableResponse: {
-                statuses: [0, 200]
-              }
-            }
+                statuses: [0, 200],
+              },
+            },
           },
           {
             urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
-            handler: 'CacheFirst',
+            handler: "CacheFirst",
             options: {
-              cacheName: 'gstatic-fonts-cache',
+              cacheName: "gstatic-fonts-cache",
               expiration: {
                 maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
+                maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
               },
               cacheableResponse: {
-                statuses: [0, 200]
-              }
-            }
+                statuses: [0, 200],
+              },
+            },
           },
           {
             urlPattern: /\/sounds\/.*\.(mp3|wav|ogg)/i,
-            handler: 'CacheFirst',
+            handler: "CacheFirst",
             options: {
-              cacheName: 'sounds-cache',
+              cacheName: "sounds-cache",
               expiration: {
                 maxEntries: 100,
-                maxAgeSeconds: 60 * 60 * 24 * 30 // <== 30 days
+                maxAgeSeconds: 60 * 60 * 24 * 30, // <== 30 days
               },
               cacheableResponse: {
-                statuses: [0, 200]
-              }
-            }
-          }
-        ]
+                statuses: [0, 200],
+              },
+            },
+          },
+        ],
       },
       devOptions: {
         enabled: true,
@@ -113,11 +119,11 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'vue-vendor': ['vue', 'pinia'],
-          'howler-vendor': ['howler'],
-          'lucide-vendor': ['lucide-vue-next'],
-        }
-      }
-    }
-  }
+          "vue-vendor": ["vue", "pinia"],
+          "howler-vendor": ["howler"],
+          "lucide-vendor": ["lucide-vue-next"],
+        },
+      },
+    },
+  },
 });
