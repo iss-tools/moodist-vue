@@ -7,13 +7,15 @@ const store = useSoundStore();
 const { isPlaying } = storeToRefs(store);
 const audioRef = ref<HTMLAudioElement | null>(null);
 
+const silentMp3 = "data:audio/mp3;base64,//OExAAAAANIAAAAAExBTUUzLjEwMKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq";
+
 const metadata: MediaMetadataInit = {
   artist: 'Moodist',
   title: 'Ambient Sounds for Focus and Calm',
   artwork: [
     {
       sizes: '200x200',
-      src: '/logo-dark.png',
+      src: '/media-artwork.png',
       type: 'image/png',
     },
   ],
@@ -86,7 +88,7 @@ onUnmounted(() => {
 <template>
   <audio
     ref="audioRef"
-    src="/sounds/silence.wav"
+    :src="silentMp3"
     loop
     playsinline
     webkit-playsinline

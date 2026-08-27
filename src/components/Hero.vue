@@ -21,7 +21,7 @@ const soundCount = computed(() => {
             alt="Moodist Logo"
             class="logo"
             height="64"
-            src="/logo-dark.png"
+            src="/media-artwork.png"
             width="64"
             style="border-radius: 16px;"
           />
