@@ -137,10 +137,27 @@ import { sounds } from "./data/sounds";
 import { useSoundStore } from "./stores/sound";
 import { useThemeStore } from "./stores/theme";
 import { useShortcuts } from "./composables/useShortcuts";
-import { computed, watchEffect } from "vue";
+import { computed, watchEffect, defineAsyncComponent } from "vue";
 import { useI18n } from "vue-i18n";
 import { useHead } from "@unhead/vue";
 import { useSnackbar } from "./composables/useSnackbar";
+
+// Lazy-loaded modal components for better code-splitting
+const Pomodoro = defineAsyncComponent(() => import('./components/Pomodoro.vue'));
+const Notepad = defineAsyncComponent(() => import('./components/Notepad.vue'));
+const SleepTimer = defineAsyncComponent(() => import('./components/SleepTimer.vue'));
+const Breathing = defineAsyncComponent(() => import('./components/Breathing.vue'));
+const Binaural = defineAsyncComponent(() => import('./components/Binaural.vue'));
+const Isochronic = defineAsyncComponent(() => import('./components/Isochronic.vue'));
+const Lofi = defineAsyncComponent(() => import('./components/Lofi.vue'));
+const Share = defineAsyncComponent(() => import('./components/Share.vue'));
+const Presets = defineAsyncComponent(() => import('./components/Presets.vue'));
+const Todo = defineAsyncComponent(() => import('./components/Todo.vue'));
+const Countdown = defineAsyncComponent(() => import('./components/Countdown.vue'));
+const Shortcuts = defineAsyncComponent(() => import('./components/Shortcuts.vue'));
+const SharedMix = defineAsyncComponent(() => import('./components/SharedMix.vue'));
+const ScanQR = defineAsyncComponent(() => import('./components/ScanQR.vue'));
+const InstallPrompt = defineAsyncComponent(() => import('./components/InstallPrompt.vue'));
 
 // Components are auto-imported by unplugin-vue-components
 
